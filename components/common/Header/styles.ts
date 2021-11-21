@@ -7,12 +7,12 @@ export const Wrapper = styled.header`
   z-index: 10;
   display: flex;
   justify-content: center;
+  background-color: rgb(0, 0, 0, 0.8);
 `;
 
 export const Container = styled.div`
   width: 1400px;
   height: 85px;
-  background-color: rgb(0, 0, 0, 0.8);
   position: relative;
   display: flex;
   justify-content: space-between;
