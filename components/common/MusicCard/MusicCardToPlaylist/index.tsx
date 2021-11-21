@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { AddPlaylistIcon, PlayIcon, HeartIcon } from "../../../../assets";
-import MusicInformation from "../MusicInformation";
+import MusicInformation from "../../MusicInformation";
 import * as S from "./styles";
 
 interface Props {}

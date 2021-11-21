@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ColorMap } from "../../../../styles/color";
+import { ColorMap } from "../../../styles/color";
 
 export const MusicInformation = styled.div`
   display: flex;
