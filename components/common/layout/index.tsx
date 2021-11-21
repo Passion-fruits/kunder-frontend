@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ContextProvider } from "../../../lib/context";
 import AudioPlayer from "../AudioPlayer";
 import Header from "../Header";
-import ImageBackground from "./Background";
+import ImageBackground from "./ImageBackground";
 import * as S from "./styles";
 
 interface Props {}

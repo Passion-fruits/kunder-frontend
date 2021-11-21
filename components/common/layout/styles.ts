@@ -20,9 +20,10 @@ export const BackgroundWrap = styled.div`
   height: 650px;
   background-image: url("background.jpg");
   position: absolute;
-  & .cover {
-    background: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0));
-    width: 100%;
-    height: 100%;
-  }
+`;
+
+export const Cover = styled.div`
+  background: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0));
+  width: 100%;
+  height: 100%;
 `;

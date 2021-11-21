@@ -6,7 +6,7 @@ interface Props {}
 const ImageBackground: FC<Props> = () => {
   return (
     <S.BackgroundWrap>
-      <div className="cover" />
+      <S.Cover />
     </S.BackgroundWrap>
   );
 };
