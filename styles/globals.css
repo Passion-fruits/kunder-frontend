@@ -23,6 +23,7 @@ textarea {
   border: none;
   outline: none;
   background: none;
+  cursor: pointer;
 }
 
 h1,
@@ -34,4 +35,14 @@ h6,
 p {
   margin: 0;
   padding: 0;
+}
+
+img {
+  object-fit: cover;
+}
+
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
