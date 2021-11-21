@@ -1,9 +1,9 @@
 import { FC } from "react";
 import * as S from "./styles";
-import { ChartArrowIcon } from "../../../../assets";
+import { ChartArrowIcon } from "../../../assets";
 
 interface Props {
-  type: "playlist" | "chart";
+  type: "playlist" | "chart" | "audioPlayer";
 }
 
 const MusicInformation: FC<Props> = ({ type }) => {
@@ -11,11 +11,13 @@ const MusicInformation: FC<Props> = ({ type }) => {
     <S.MusicInformation>
       {type === "playlist" ? (
         <span className="index-num">1</span>
-      ) : (
+      ) : type === "chart" ? (
         <div className="chart-rank-index">
           <span>1</span>
           <ChartArrowIcon size={8} color="red" />
         </div>
+      ) : (
+        <></>
       )}
       <img src="https://anthoncode.com/wp-content/uploads/2020/06/poster-havana-psd-camila-cabello.jpg" />
       <div className="title-artist-wrap">

@@ -17,9 +17,9 @@ export default function HeartIcon({ size }: Props) {
         transform="translate(-1.573 -3.747)"
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
       />
     </svg>
   );
