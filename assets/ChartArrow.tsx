@@ -11,7 +11,7 @@ export default function ChartArrowIcon({ size, color }: Props) {
       width={(size * 10) / 8}
       height={size}
       viewBox="0 0 10 8"
-      style={color === "blue" ? { transform: "rotate(90deg)" } : {}}
+      style={color === "blue" ? { transform: "rotate(180deg)" } : {}}
     >
       <path
         id="다각형_19"
