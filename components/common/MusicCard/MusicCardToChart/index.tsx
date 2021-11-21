@@ -1,10 +1,15 @@
 import { FC } from "react";
+import MusicInformation from "../MusicInformation";
 import * as S from "./styles";
 
 interface Props {}
 
-const ComponentName: FC<Props> = () => {
-  return <></>;
+const MusicCardtToChart: FC<Props> = () => {
+  return (
+    <S.Wrapper>
+      <MusicInformation type="chart" />
+    </S.Wrapper>
+  );
 };
 
-export default ComponentName;
+export default MusicCardtToChart;
