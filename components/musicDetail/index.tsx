@@ -11,9 +11,13 @@ const MusicDetail: FC<Props> = () => {
       <S.Wrapper>
         <S.Container>
           <S.AlbumImageBox>
-            <S.AlbumImage src={"https://i.pinimg.com/originals/3a/f0/e5/3af0e55ea66ea69e35145fb108b4a636.jpg"}/>
+            <S.AlbumImage
+              src={
+                "https://i.pinimg.com/originals/3a/f0/e5/3af0e55ea66ea69e35145fb108b4a636.jpg"
+              }
+            />
           </S.AlbumImageBox>
-          <S.DescriptionBox>
+          <S.Description>
             <S.TitleBox>
               <S.Line />
               <S.SongTitle>D (half moon)</S.SongTitle>
@@ -31,23 +35,34 @@ const MusicDetail: FC<Props> = () => {
             </S.SubInformationBox>
             <S.ArtistTalkBox>
               <S.ArtistTalk>아티스트의 말</S.ArtistTalk>
-              <S.TalkContent>안녕하십니까, 이번에 ㅈ되게 뽑아본 노래인데 어떠신지요 재밌게 들어보세요</S.TalkContent>
+              <S.TalkContent>
+                안녕하십니까, 이번에 ㅈ되게 뽑아본 노래인데 어떠신지요 재밌게
+                들어보세요
+              </S.TalkContent>
             </S.ArtistTalkBox>
             <S.ButtonBox>
               <S.ButtonTag background={ColorMap.mainColor} gap={"15px"}>
-                <PlayIcon size={11}/>
+                <PlayIcon size={11} />
                 <S.ButtonText>음악 듣기</S.ButtonText>
               </S.ButtonTag>
-              <S.ButtonTag background={ColorMap.grey700} gap={""}>후원하기</S.ButtonTag>
+              <S.ButtonTag background={ColorMap.grey700} gap={""}>
+                후원하기
+              </S.ButtonTag>
               <S.ButtonTag background={ColorMap.grey700} gap={"6px"}>
                 <HeartIcon size={13} />
                 <S.ButtonText>0</S.ButtonText>
               </S.ButtonTag>
-              <AddPlaylistIcon size={24}/>
-              <AddPlaylistIcon size={24}/>
+              <S.IconBox>
+                <AddPlaylistIcon size={24} />
+                <AddPlaylistIcon size={24} />
+              </S.IconBox>
             </S.ButtonBox>
-          </S.DescriptionBox>
+          </S.Description>
         </S.Container>
+        <S.WriteComment
+          type="text"
+          placeholder="음악에 의견을 남겨주세요! (엔터키를 눌러 등록)"
+        />
       </S.Wrapper>
     </>
   );

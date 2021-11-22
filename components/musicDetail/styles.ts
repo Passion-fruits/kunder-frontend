@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 800px;
   display: flex;
   margin-top: 30px;
   gap: 20px;
@@ -20,7 +19,7 @@ export const AlbumImage = styled.img`
   border-radius: 5px;
 `;
 
-export const DescriptionBox = styled.div`
+export const Description = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
@@ -34,12 +33,13 @@ export const Line = styled.div`
 `;
 
 export const TitleBox = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const SongTitle = styled.div`
   font-size: 30px;
+  font-weight: bold;
   color: ${ColorMap.grey000};
 `;
 
@@ -112,24 +112,43 @@ export const TalkContent = styled.div`
 `;
 
 export const ButtonBox = styled.div`
-    display: flex;
-    gap: 15px;
-    align-items: center;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 `;
 
-export const ButtonTag = styled.button<{ background: string, gap : string }>`
-    cursor: pointer;
-    background-color: ${props => props.background};
-    display: flex;
-    align-items: center;
-    gap: ${props => props.gap};
-    padding: 0 24px;
-    border-radius: 3px;
-    height:40px;
-    font-size: 17px;
+export const ButtonTag = styled.button<{ background: string; gap: string }>`
+  cursor: pointer;
+  background-color: ${(props) => props.background};
+  display: flex;
+  align-items: center;
+  gap: ${(props) => props.gap};
+  padding: 0 24px;
+  border-radius: 3px;
+  height: 40px;
+  font-size: 17px;
 `;
 
 export const ButtonText = styled.div`
-    color: ${ColorMap.grey000};
-    margin-bottom: 3px;
+  color: ${ColorMap.grey000};
+  margin-bottom: 3px;
+`;
+
+export const WriteComment = styled.input`
+  outline: none;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  padding: 0 20px;
+  font-size: 16px;
+  background-color: ${ColorMap.grey800};
+  height: 60px;
+  margin-top: 25px;
+  cursor: text;
+`;
+
+export const IconBox = styled.div`
+  display: flex;
+  margin-left: 10px;
+  gap: 25px;
 `;
