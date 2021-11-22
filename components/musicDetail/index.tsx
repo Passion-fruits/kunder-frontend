@@ -1,7 +1,12 @@
 import { FC } from "react";
-import { AddPlaylistIcon, HeartIcon, PlayIcon } from "../../assets";
+import {
+  AddPlaylistIcon,
+  AlertIcon,
+  CoinIcon,
+  HeartIcon,
+  PlayIcon,
+} from "../../assets";
 import * as S from "./styles";
-import { ColorMap } from "../../styles/color";
 
 interface Props {}
 
@@ -11,51 +16,51 @@ const MusicDetail: FC<Props> = () => {
       <S.Wrapper>
         <S.Container>
           <S.AlbumImageBox>
-            <S.AlbumImage
-              src={
-                "https://i.pinimg.com/originals/3a/f0/e5/3af0e55ea66ea69e35145fb108b4a636.jpg"
-              }
-            />
+            <img src="https://i.pinimg.com/originals/3a/f0/e5/3af0e55ea66ea69e35145fb108b4a636.jpg" />
           </S.AlbumImageBox>
           <S.Description>
             <S.TitleBox>
-              <S.Line />
-              <S.SongTitle>D (half moon)</S.SongTitle>
-              <S.ArtistName>Dean</S.ArtistName>
+              <div className="line" />
+              <h1 className="music-title">D (half moon)</h1>
+              <h3 className="artist">Dean</h3>
             </S.TitleBox>
             <S.SubInformationBox>
-              <S.ViewTag>
-                <PlayIcon size={11} />
-                <S.Views>612</S.Views>
-              </S.ViewTag>
-              <S.Tags>힙합</S.Tags>
-              <S.Tags>아침에</S.Tags>
-              <S.Donations>100KDT 후원</S.Donations>
-              <S.LastTime>3일전</S.LastTime>
+              <div className="show-cnt">
+                <PlayIcon size={12} />
+                612
+              </div>
+              <div className="tag">힙합</div>
+              <div className="tag">아침에</div>
+              <span className="donation-cnt">100KDT 후원</span>
+              <span className="last-time">3일전</span>
             </S.SubInformationBox>
             <S.ArtistTalkBox>
-              <S.ArtistTalk>아티스트의 말</S.ArtistTalk>
-              <S.TalkContent>
+              <h1 className="title">아티스트의 말</h1>
+              <p className="artist-talk">
                 안녕하십니까, 이번에 ㅈ되게 뽑아본 노래인데 어떠신지요 재밌게
                 들어보세요
-              </S.TalkContent>
+              </p>
             </S.ArtistTalkBox>
             <S.ButtonBox>
-              <S.ButtonTag background={ColorMap.mainColor} gap={"15px"}>
-                <PlayIcon size={11} />
-                <S.ButtonText>음악 듣기</S.ButtonText>
-              </S.ButtonTag>
-              <S.ButtonTag background={ColorMap.grey700} gap={""}>
+              <button className="base-btn">
+                <PlayIcon size={13} />
+                음악 듣기
+              </button>
+              <button className="base-btn">
+                <CoinIcon size={13} />
                 후원하기
-              </S.ButtonTag>
-              <S.ButtonTag background={ColorMap.grey700} gap={"6px"}>
-                <HeartIcon size={13} />
-                <S.ButtonText>0</S.ButtonText>
-              </S.ButtonTag>
-              <S.IconBox>
-                <AddPlaylistIcon size={24} />
-                <AddPlaylistIcon size={24} />
-              </S.IconBox>
+              </button>
+              <button className="base-btn">
+                <HeartIcon size={14} />0
+              </button>
+              <div className="icon-box">
+                <button>
+                  <AddPlaylistIcon size={20} />
+                </button>
+                <button>
+                  <AlertIcon size={23} />
+                </button>
+              </div>
             </S.ButtonBox>
           </S.Description>
         </S.Container>
