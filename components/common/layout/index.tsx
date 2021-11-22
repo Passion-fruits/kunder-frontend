@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import { FC } from "react";
 import { ContextProvider } from "../../../lib/context";
 import AudioPlayer from "../AudioPlayer";
@@ -8,11 +9,12 @@ import * as S from "./styles";
 interface Props {}
 
 const Layout: FC<Props> = ({ children }) => {
+  const router = useRouter();
   return (
     <ContextProvider>
       <S.Wrapper>
         <ImageBackground />
-        <Header />
+        {router.pathname !== "/auth" && <Header />}
         <S.Container>{children}</S.Container>
         <AudioPlayer />
       </S.Wrapper>
