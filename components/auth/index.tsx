@@ -1,4 +1,5 @@
 import { FC } from "react";
+import CardList from "../common/OptionCardList";
 import * as S from "./styles";
 
 interface Props {}
@@ -7,7 +8,7 @@ const Auth: FC<Props> = () => {
   return (
     <S.Wrapper>
       <div className="line" />
-      <h1 className="title">
+      <h1 className="introduce">
         한국 #1 인디음악 서비스 <br />
         쿤더
       </h1>
@@ -16,6 +17,7 @@ const Auth: FC<Props> = () => {
         <button>로그인/가입</button>
         <button>서비스 소개</button>
       </S.ButtonWrap>
+      <CardList option="musicCardToMain" />
     </S.Wrapper>
   );
 };

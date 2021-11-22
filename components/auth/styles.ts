@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     height: 3px;
     background-color: ${ColorMap.mainColor};
   }
-  & .title {
+  & .introduce {
     font-size: 40px;
     font-weight: bold;
     color: ${ColorMap.grey000};
@@ -28,6 +28,7 @@ export const ButtonWrap = styled.div`
   display: flex;
   gap: 15px;
   margin-top: 30px;
+  margin-bottom: 100px;
   & button {
     width: 240px;
     height: 40px;
