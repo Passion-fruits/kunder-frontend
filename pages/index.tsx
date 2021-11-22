@@ -1,3 +1,4 @@
+import Main from "./../components/main/index";
 export default function Home() {
-  return <>안녕하세요</>;
+  return <Main />;
 }
