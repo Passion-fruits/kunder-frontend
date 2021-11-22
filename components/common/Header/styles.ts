@@ -7,7 +7,7 @@ export const Wrapper = styled.header`
   z-index: 10;
   display: flex;
   justify-content: center;
-  background-color: rgb(0, 0, 0, 0.8);
+  transition: 300ms;
 `;
 
 export const Container = styled.div`

@@ -23,7 +23,7 @@ export const BackgroundWrap = styled.div`
 `;
 
 export const Cover = styled.div`
-  background: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0));
+  background: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0));
   width: 100%;
   height: 100%;
 `;

@@ -1,12 +1,30 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import MenuTab from "./MenuTab";
 import * as S from "./styles";
 
 interface Props {}
 
 const Header: FC<Props> = () => {
+  const [isScrollTop, setIsScrollTop] = useState<boolean>(true);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY < 50) {
+        setIsScrollTop(true);
+      } else {
+        setIsScrollTop(false);
+      }
+    });
+  }, []);
+
   return (
-    <S.Wrapper>
+    <S.Wrapper
+      style={
+        isScrollTop
+          ? { backgroundColor: "rgb(0,0,0,0)" }
+          : { backgroundColor: "rgb(0,0,0,0.8)" }
+      }
+    >
       <S.Container>
         <MenuTab />
         <h1 className="logo">KUNDER</h1>
