@@ -41,7 +41,7 @@ const CardList: FC<Props> = ({ data = [1, 2, 3, 4, 5, 6], option }: Props) => {
       )}
       {option === "musicCardToChart" && (
         <S.ColumnWrapper>
-          {data.map((e, index) => (
+          {[1, 2, 3, 4, 5].map((e, index) => (
             <MusicCardToChart key={index} />
           ))}
         </S.ColumnWrapper>
