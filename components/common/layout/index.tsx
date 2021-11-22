@@ -13,7 +13,13 @@ const Layout: FC<Props> = ({ children }) => {
   return (
     <ContextProvider>
       <S.Wrapper>
-        <ImageBackground />
+        {router.pathname === "/auth" ? (
+          <ImageBackground />
+        ) : router.pathname === "/" ? (
+          <ImageBackground />
+        ) : (
+          <></>
+        )}
         {router.pathname !== "/auth" && <Header />}
         <S.Container>{children}</S.Container>
         <AudioPlayer />
