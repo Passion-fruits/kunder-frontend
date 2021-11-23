@@ -1,5 +1,5 @@
 import { FC } from "react";
-import CardList from "../common/OptionCardList";
+import ShowMusic from "./ShowMusic";
 import * as S from "./styles";
 
 interface Props {}
@@ -17,7 +17,7 @@ const Auth: FC<Props> = () => {
         <button>로그인/가입</button>
         <button>서비스 소개</button>
       </S.ButtonWrap>
-      <CardList option="musicCardToMain" />
+      <ShowMusic />
     </S.Wrapper>
   );
 };
