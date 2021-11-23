@@ -13,6 +13,7 @@ const ShowMusicCard: FC<Props> = ({ currentShow, setCurrentIndex, index }) => {
     <S.CardWrap
       currentShow={currentShow}
       onClick={() => setCurrentIndex(index)}
+      style={currentShow ? {} : { cursor: "pointer" }}
     >
       <S.CoverWrap currentShow={currentShow}>
         <button>

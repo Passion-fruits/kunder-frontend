@@ -64,13 +64,12 @@ export const ShowMusicWrapper = styled.div<{ index }>`
 `;
 
 export const CardWrap = styled.div<{ currentShow: boolean }>`
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   opacity: ${(res) => (res.currentShow ? 1 : 0.5)};
   width: ${(res) => (res.currentShow ? "280px" : "230px")};
   & button {
-    opacity: ${(res) => (res.currentShow ? 1 : 0)};
+    display: ${(res) => (res.currentShow ? "block" : "none")};
   }
   & .music-title {
     font-size: ${(res) => (res.currentShow ? "20px" : "18px")};
