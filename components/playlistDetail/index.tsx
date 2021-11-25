@@ -23,7 +23,9 @@ const PlaylistDetail: FC<Props> = () => {
         </S.ButtonWrap>
       </S.PlaylistInformation>
       <S.PlaylistMusicWrapper>
-        <CardList option="musicCardToPlaylist" />
+        <div className="flex-wrap">
+          <CardList option="musicCardToPlaylist" />
+        </div>
       </S.PlaylistMusicWrapper>
     </S.Wrapper>
   );

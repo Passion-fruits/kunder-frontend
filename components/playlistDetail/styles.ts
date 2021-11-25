@@ -73,8 +73,11 @@ export const ButtonWrap = styled.div`
 `;
 
 export const PlaylistMusicWrapper = styled.div`
-  width: 850px;
-  position: absolute;
-  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
   padding-bottom: 130px;
+  & .flex-wrap {
+    width: 830px;
+  }
 `;
