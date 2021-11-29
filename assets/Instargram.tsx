@@ -18,8 +18,8 @@ export default function InstargramIcon({ size }: Props) {
           y2="1.081"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#ff1313" />
-          <stop offset="1" stop-color="#718dff" />
+          <stop offset="0" stopColor="#ff1313" />
+          <stop offset="1" stopColor="#718dff" />
         </linearGradient>
       </defs>
       <path

@@ -54,14 +54,10 @@ export const NameWrapper = styled.div`
 export const CntList = styled.ul`
   display: flex;
   gap: 30px;
-  padding: 0;
-  margin: 0;
   margin-top: 20px;
   & li {
     list-style: none;
     font-size: 17px;
-    padding: 0;
-    margin: 0;
     color: ${ColorMap.grey300};
     & b {
       color: ${ColorMap.grey000};

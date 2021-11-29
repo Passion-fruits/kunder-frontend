@@ -18,7 +18,7 @@ export default function YoutubeIcon({ size }: Props) {
         transform="translate(8.367 4.978)"
         fill="#fff"
         stroke="#707070"
-        stroke-width="1"
+        strokeWidth="1"
       >
         <rect width="17" height="14" stroke="none" />
         <rect x="0.5" y="0.5" width="16" height="13" fill="none" />
