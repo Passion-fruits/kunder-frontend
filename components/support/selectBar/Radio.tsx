@@ -9,7 +9,12 @@ interface Props {
 const Radio: FC<Props> = ({ id, content }) => {
   return (
     <label htmlFor={id}>
-      <input type="radio" id={id} name="sortMenu" />
+      <input
+        type="radio"
+        id={id}
+        name="sortMenu"
+        defaultChecked={id === "recent"}
+      />
       <div className="radio-icon">
         <div className="circle"></div>
       </div>
