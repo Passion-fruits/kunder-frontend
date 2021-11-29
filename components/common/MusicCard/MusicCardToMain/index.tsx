@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { PlayIcon } from "../../../../assets";
+import PlayButton from "../../PlayButton";
 import * as S from "./styles";
 
 interface Props {}
@@ -13,9 +14,7 @@ const MusicCardToMain: FC<Props> = () => {
             <PlayIcon size={7} />
             123
           </div>
-          <button className="play-btn">
-            <PlayIcon size={15} />
-          </button>
+          <PlayButton />
         </S.MusicInformation>
         <img src="https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover?fimg-ssr-default" />
       </S.MusicCoverWrap>

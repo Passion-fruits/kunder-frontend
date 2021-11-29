@@ -27,19 +27,4 @@ export const CoverImageWrapper = styled.div`
     height: 160px;
     box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.3);
   }
-  & button {
-    width: 45px;
-    height: 45px;
-    background-color: rgb(0, 0, 0, 0.5);
-    border-radius: 50%;
-    position: absolute;
-    transition: 300ms;
-    &:hover {
-      opacity: 0.8;
-    }
-    & svg {
-      margin-top: 2px;
-      margin-left: 5px;
-    }
-  }
 `;
