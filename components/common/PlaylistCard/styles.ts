@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
     font-weight: 500;
     text-align: center;
     margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `;
 

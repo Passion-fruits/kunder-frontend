@@ -33,12 +33,14 @@ export const MusicInformation = styled.div`
       color: ${ColorMap.grey000};
       font-size: 16px;
       font-weight: 500;
+      cursor: pointer;
     }
     & h3 {
       font-size: 13px;
       font-weight: 400;
       color: ${ColorMap.grey200};
       margin-top: 2px;
+      cursor: pointer;
     }
   }
 `;
