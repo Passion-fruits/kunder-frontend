@@ -20,11 +20,6 @@ export const MusicInformation = styled.div`
       color: ${ColorMap.mainColor};
     }
   }
-  & img {
-    width: 45px;
-    height: 45px;
-    border-radius: 3px;
-  }
   & .title-artist-wrap {
     display: flex;
     flex-direction: column;
@@ -41,6 +36,32 @@ export const MusicInformation = styled.div`
       color: ${ColorMap.grey200};
       margin-top: 2px;
       cursor: pointer;
+    }
+  }
+`;
+
+export const CoverWrap = styled.div`
+  position: relative;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  & img {
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+  }
+  & .play-cover {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.5);
+    position: absolute;
+    transition: 0.3s;
+    & svg {
+      margin: 12px 10px;
+    }
+    &:hover {
+      opacity: 1;
     }
   }
 `;

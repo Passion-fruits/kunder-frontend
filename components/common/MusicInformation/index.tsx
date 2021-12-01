@@ -1,6 +1,6 @@
 import { FC } from "react";
 import * as S from "./styles";
-import { ChartArrowIcon } from "../../../assets";
+import { ChartArrowIcon, PlayIcon } from "../../../assets";
 import Link from "next/link";
 
 interface Props {
@@ -20,7 +20,12 @@ const MusicInformation: FC<Props> = ({ type }) => {
       ) : (
         <></>
       )}
-      <img src="https://anthoncode.com/wp-content/uploads/2020/06/poster-havana-psd-camila-cabello.jpg" />
+      <S.CoverWrap>
+        <button className="play-cover">
+          <PlayIcon size={18} />
+        </button>
+        <img src="https://anthoncode.com/wp-content/uploads/2020/06/poster-havana-psd-camila-cabello.jpg" />
+      </S.CoverWrap>
       <div className="title-artist-wrap">
         <Link href="/music/1">
           <h1>좋았던 기억만 그리운 마음만</h1>
