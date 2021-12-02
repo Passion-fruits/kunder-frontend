@@ -7,10 +7,20 @@ import {
   YoutubeIcon,
 } from "../../../assets";
 import * as S from "./styles";
+import { setContextValue } from "./../../../lib/context/index";
 
 interface Props {}
 
 const Information: FC<Props> = () => {
+  const dispatch = setContextValue();
+
+  const onSupportModal = () => {
+    dispatch({
+      type: "SET_MODAL",
+      modal: "support",
+    });
+  };
+
   return (
     <S.Wrapper>
       <img
@@ -22,7 +32,7 @@ const Information: FC<Props> = () => {
           <h1 className="nickname">김팔복</h1>
           <div className="button-wrap">
             <button>팔로우</button>
-            <button>
+            <button onClick={onSupportModal}>
               <CoinIcon size={18} /> 후원하기
             </button>
           </div>

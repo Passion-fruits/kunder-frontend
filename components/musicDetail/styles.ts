@@ -148,6 +148,7 @@ export const WriteComment = styled.input`
   width: 100%;
   height: 60px;
   margin-top: 25px;
+  margin-bottom: 50px;
   background-color: ${ColorMap.grey800};
   border-radius: 5px;
   padding: 0 20px;

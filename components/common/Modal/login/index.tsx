@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "@emotion/styled";
-import { ColorMap } from "./../../../../styles/color";
-import { setContextValue } from "./../../../../lib/context/index";
+import { ColorMap } from "../../../../styles/color";
+import { setContextValue } from "../../../../lib/context/index";
 
 interface Props {}
 

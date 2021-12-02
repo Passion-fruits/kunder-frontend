@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { FC } from "react";
-import { ColorMap } from "./../../../../styles/color";
+import { ColorMap } from "../../../../styles/color";
 
 const Signup: FC = () => {
   return (
