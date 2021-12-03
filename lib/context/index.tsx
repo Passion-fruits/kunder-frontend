@@ -1,20 +1,8 @@
-import React, { useReducer, useContext, createContext, Dispatch } from "react";
+import React, { useReducer, useContext, createContext } from "react";
+import { Action, SampleDispatch, State } from "./type";
 
-export type ModalOption = "login" | "signUp" | "none";
-
-type State = {
-  modal: ModalOption;
-};
-
-type Action = {
-  type: "SET_MODAL";
-  modal: ModalOption;
-};
-
-type SampleDispatch = Dispatch<Action>;
-
-const SampleStateContext = createContext<State | null>(null);
-const SampleDispatchContext = createContext<SampleDispatch | null>(null);
+const StateContext = createContext<State | null>(null);
+const DispatchContext = createContext<SampleDispatch | null>(null);
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -33,22 +21,22 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
     modal: "none",
   });
   return (
-    <SampleStateContext.Provider value={state}>
-      <SampleDispatchContext.Provider value={dispatch}>
+    <StateContext.Provider value={state}>
+      <DispatchContext.Provider value={dispatch}>
         {children}
-      </SampleDispatchContext.Provider>
-    </SampleStateContext.Provider>
+      </DispatchContext.Provider>
+    </StateContext.Provider>
   );
 }
 
 export function getContextValue() {
-  const state = useContext(SampleStateContext);
+  const state = useContext(StateContext);
   if (!state) throw new Error("Cannot find SampleProvider");
   return state;
 }
 
 export function setContextValue() {
-  const dispatch = useContext(SampleDispatchContext);
+  const dispatch = useContext(DispatchContext);
   if (!dispatch) throw new Error("Cannot find SampleProvider");
   return dispatch;
 }

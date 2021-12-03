@@ -1,10 +1,15 @@
 import { FC } from "react";
 import ShowMusic from "./ShowMusic";
 import * as S from "./styles";
+import { setContextValue } from "./../../lib/context/index";
 
 interface Props {}
 
 const Auth: FC<Props> = () => {
+  const dispatch = setContextValue();
+  const openLoginModal = () => {
+    dispatch({ type: "SET_MODAL", modal: "login" });
+  };
   return (
     <S.Wrapper>
       <div className="line" />
@@ -14,7 +19,7 @@ const Auth: FC<Props> = () => {
       </h1>
       <p className="description">로그인 후 더 많은 서비스를 즐겨보세요</p>
       <S.ButtonWrap>
-        <button>로그인/가입</button>
+        <button onClick={openLoginModal}>로그인/가입</button>
         <button>서비스 소개</button>
       </S.ButtonWrap>
       <ShowMusic />
