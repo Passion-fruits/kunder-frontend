@@ -9,9 +9,11 @@ import {
 import * as S from "./styles";
 import { setContextValue } from "./../../lib/context/index";
 
-interface Props {}
+interface Props {
+  like: string;
+}
 
-const ButtonBox: FC<Props> = () => {
+const ButtonBox: FC<Props> = ({ like }) => {
   const dispatch = setContextValue();
 
   const onSupportModal = () => {
@@ -32,7 +34,8 @@ const ButtonBox: FC<Props> = () => {
         후원하기
       </button>
       <button className="base-btn">
-        <HeartIcon size={14} />0
+        <HeartIcon size={14} />
+        {like}
       </button>
       <div className="icon-box">
         <button>
