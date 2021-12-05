@@ -7,4 +7,10 @@ export default {
       url: "/song/10",
     });
   },
+  getUserMusic({ user_id, page }) {
+    return request({
+      method: "get",
+      url: `/song/profile/${user_id}?page=${page}`,
+    });
+  },
 };

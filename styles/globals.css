@@ -23,6 +23,10 @@ textarea {
   border: none;
   outline: none;
   background: none;
+}
+
+select,
+button {
   cursor: pointer;
 }
 

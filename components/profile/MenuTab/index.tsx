@@ -1,4 +1,5 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import music from "../../../lib/api/music";
 import CardList from "../../common/OptionCardList";
 import * as S from "./styles";
 
@@ -9,8 +10,21 @@ interface Props {
 type menuType = "노래" | "플레이리스트" | "팔로워" | "팔로잉";
 
 const MenuTab: FC<Props> = ({ user_id }) => {
-  const [menu, setMenu] = useState<menuType>("노래");
   const menuArr: menuType[] = ["노래", "팔로워", "팔로잉", "플레이리스트"];
+  const [menu, setMenu] = useState<menuType>("노래");
+  const [userUploadData, setUserUploadData] = useState([]);
+
+  useEffect(() => {
+    music
+      .getUserMusic({ user_id: 3, page: 1 })
+      .then((res) => {
+        setUserUploadData(res.data.songs);
+      })
+      .catch(() => {
+        return;
+      });
+  }, []);
+
   return (
     <S.Wrapper>
       <S.MenuWrap>
@@ -27,7 +41,7 @@ const MenuTab: FC<Props> = ({ user_id }) => {
       {(() => {
         switch (menu) {
           case "노래":
-            return <CardList option="musicCardToMain" />;
+            return <CardList option="musicCardToMain" data={userUploadData} />;
           case "플레이리스트":
             return <CardList option="playlistCard" />;
         }

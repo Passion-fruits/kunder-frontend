@@ -7,4 +7,10 @@ export default {
       url: "/playlist/3",
     });
   },
+  getUserPlaylist({ user_id }) {
+    return request({
+      method: "get",
+      url: `/playlist/profile/${user_id}`,
+    });
+  },
 };
