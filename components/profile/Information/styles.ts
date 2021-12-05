@@ -73,10 +73,14 @@ export const SNSWrapper = styled.div`
   & button {
     padding: 0;
   }
+  & .none {
+    opacity: 0.6;
+  }
 `;
 
 export const Description = styled.p`
   margin-top: 30px;
-  color: ${ColorMap.grey000};
+  color: ${ColorMap.grey100};
   font-size: 18px;
+  font-weight: 500;
 `;

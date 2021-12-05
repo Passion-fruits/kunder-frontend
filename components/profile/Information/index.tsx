@@ -8,10 +8,13 @@ import {
 } from "../../../assets";
 import * as S from "./styles";
 import { setContextValue } from "./../../../lib/context/index";
+import { Profile } from "./../../../lib/interface/profile";
 
-interface Props {}
+interface Props {
+  profile: Profile;
+}
 
-const Information: FC<Props> = () => {
+const Information: FC<Props> = ({ profile }) => {
   const dispatch = setContextValue();
 
   const onSupportModal = () => {
@@ -21,15 +24,31 @@ const Information: FC<Props> = () => {
     });
   };
 
+  const SNSArr = [
+    {
+      type: "facebook",
+      component: <FacebookIcon size={24} />,
+    },
+    {
+      type: "soundcloud",
+      component: <SoundCloudIcon size={15} />,
+    },
+    {
+      type: "insta",
+      component: <InstargramIcon size={25} />,
+    },
+    {
+      type: "youtube",
+      component: <YoutubeIcon size={20} />,
+    },
+  ];
+
   return (
     <S.Wrapper>
-      <img
-        src="https://media.npr.org/assets/img/2020/02/19/gettyimages-1199920197-a87bd2db3b35097b186b95bc76e6398fb35e27bb-s1100-c50.jpg"
-        className="profile-img"
-      />
+      <img src={profile.profile} className="profile-img" />
       <S.Container>
         <S.NameWrapper>
-          <h1 className="nickname">김팔복</h1>
+          <h1 className="nickname">{profile.name}</h1>
           <div className="button-wrap">
             <button>팔로우</button>
             <button onClick={onSupportModal}>
@@ -39,32 +58,27 @@ const Information: FC<Props> = () => {
         </S.NameWrapper>
         <S.CntList>
           <li>
-            팔로워 <b>10명</b>
+            팔로워 <b>{profile.follower}명</b>
           </li>
           <li>
-            팔로잉 <b>10명</b>
+            팔로잉 <b>{profile.following}명</b>
           </li>
           <li>
-            노래 <b>1곡</b>
+            노래 <b>{profile.song_count}곡</b>
           </li>
         </S.CntList>
         <S.SNSWrapper>
-          <button>
-            <FacebookIcon size={24} />
-          </button>
-          <button>
-            <InstargramIcon size={25} />
-          </button>
-          <button>
-            <YoutubeIcon size={20} />
-          </button>
-          <button>
-            <SoundCloudIcon size={15} />
-          </button>
+          {SNSArr.map((sns, index) => (
+            <button
+              key={index}
+              className={!profile[sns.type] && "none"}
+              onClick={() => window.open(profile[sns.type])}
+            >
+              {sns.component}
+            </button>
+          ))}
         </S.SNSWrapper>
-        <S.Description>
-          안녕하십니까 형님들, 대전에서 랩하는 부산 미남입니다,.
-        </S.Description>
+        <S.Description>{profile.bio}</S.Description>
       </S.Container>
     </S.Wrapper>
   );
