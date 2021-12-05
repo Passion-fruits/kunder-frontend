@@ -3,11 +3,11 @@ import { PlayIcon } from "../../assets";
 import * as S from "./styles";
 import ButtonBox from "./ButtonBox";
 import CardList from "./../common/OptionCardList/index";
-import { music } from "./../../lib/interface/music";
+import { Music } from "./../../lib/interface/music";
 import { getDate } from "./../../lib/utils/getDate";
 
 interface Props {
-  music: music;
+  music: Music;
 }
 
 const MusicDetail: FC<Props> = ({ music }) => {

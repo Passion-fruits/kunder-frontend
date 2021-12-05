@@ -3,10 +3,13 @@ import { PlayIcon } from "../../../../assets";
 import PlayButton from "../../PlayButton";
 import * as S from "./styles";
 import Link from "next/link";
+import { music } from "./../../../../lib/interface/music";
 
-interface Props {}
+interface Props {
+  music: music;
+}
 
-const MusicCardToMain: FC<Props> = () => {
+const MusicCardToMain: FC<Props> = ({ music }) => {
   return (
     <S.Wrapper>
       <S.MusicCoverWrap>

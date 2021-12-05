@@ -2,12 +2,22 @@ import { FC } from "react";
 import * as S from "./styles";
 import { ChartArrowIcon, PlayIcon } from "../../../assets";
 import Link from "next/link";
+import { MusicInformation } from "./../../../lib/interface/music";
 
 interface Props {
   type: "playlist" | "chart" | "audioPlayer";
+  music: MusicInformation;
 }
 
-const MusicInformation: FC<Props> = ({ type }) => {
+const MusicInformation: FC<Props> = ({
+  type,
+  music = {
+    cover_url:
+      "https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg",
+    title: "제목",
+    artist: "아티스트",
+  },
+}) => {
   return (
     <S.MusicInformation>
       {type === "playlist" ? (
@@ -24,14 +34,14 @@ const MusicInformation: FC<Props> = ({ type }) => {
         <button className="play-cover">
           <PlayIcon size={18} />
         </button>
-        <img src="https://anthoncode.com/wp-content/uploads/2020/06/poster-havana-psd-camila-cabello.jpg" />
+        <img src={music.cover_url} />
       </S.CoverWrap>
       <div className="title-artist-wrap">
         <Link href="/music/1">
-          <h1>좋았던 기억만 그리운 마음만</h1>
+          <h1>{music.title}</h1>
         </Link>
         <Link href="/profile/1">
-          <h3>김팔복</h3>
+          <h3>{music.artist}</h3>
         </Link>
       </div>
     </S.MusicInformation>

@@ -1,20 +1,27 @@
 import { FC } from "react";
 import { PlayIcon } from "../../assets";
+import { PlaylistDetailType } from "../../lib/interface/playlist";
 import CardList from "../common/OptionCardList";
 import * as S from "./styles";
 
-interface Props {}
+interface Props {
+  playlistDetailInfor: PlaylistDetailType;
+}
 
-const PlaylistDetail: FC<Props> = () => {
+const PlaylistDetail: FC<Props> = ({
+  playlistDetailInfor: { playlist, songs },
+}) => {
   return (
     <S.Wrapper>
       <S.PlaylistInformation>
         <S.CoverImageWrapper>
-          <img src="https://post-phinf.pstatic.net/MjAxODExMDVfMjU3/MDAxNTQxNDE2MzM2NjI3.rkS4S4fCTQsaLHMqkq2GekFty7EfkLKws-fqapmfPsAg.Mkhz5iRNWxLSC4dl-lZdoQHRVU6-Opiya6bUYhBvgQIg.JPEG/71DQrKpImPL._SL1400_.jpg?type=w1200" />
+          <img src={playlist.cover_url} />
         </S.CoverImageWrapper>
-        <h1 className="playlist-title text-overflow">힙합 모음집</h1>
-        <h3 className="playlist-maker">By 김팔복</h3>
-        <p className="playlist-like">이 플레이리스트를 12명이 좋아합니다.</p>
+        <h1 className="playlist-title text-overflow">{playlist.name}</h1>
+        <h3 className="playlist-maker">{playlist.author}</h3>
+        <p className="playlist-like">
+          이 플레이리스트를 {playlist.like}명이 좋아합니다.
+        </p>
         <S.ButtonWrap>
           <button>
             <PlayIcon size={15} /> 전체 재생하기
@@ -24,7 +31,7 @@ const PlaylistDetail: FC<Props> = () => {
       </S.PlaylistInformation>
       <S.PlaylistMusicWrapper>
         <div className="flex-wrap">
-          <CardList option="musicCardToPlaylist" />
+          <CardList option="musicCardToPlaylist" data={songs} />
         </div>
       </S.PlaylistMusicWrapper>
     </S.Wrapper>

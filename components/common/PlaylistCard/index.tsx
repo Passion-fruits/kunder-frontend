@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { PlayIcon } from "../../../assets";
 import PlayButton from "../PlayButton";
 import * as S from "./styles";
 import Link from "next/link";
