@@ -166,3 +166,31 @@ export const CommentWrap = styled.div`
     font-size: 18px;
   }
 `;
+
+export const Comment = styled.div`
+  display: flex;
+  margin-top: 25px;
+  & img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  & div {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    & span {
+      font-size: 15px;
+      color: ${ColorMap.grey100};
+      & time {
+        color: ${ColorMap.grey300};
+        margin-left: 5px;
+      }
+    }
+    & p {
+      color: ${ColorMap.grey000};
+      font-size: 18px;
+      margin-top: 5px;
+    }
+  }
+`;
