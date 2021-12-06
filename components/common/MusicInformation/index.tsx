@@ -40,7 +40,7 @@ const MusicInformation: FC<Props> = ({
         <Link href="/music/1">
           <h1>{music.title}</h1>
         </Link>
-        <Link href="/profile/1">
+        <Link href="/profile/3">
           <h3>{music.artist}</h3>
         </Link>
       </div>

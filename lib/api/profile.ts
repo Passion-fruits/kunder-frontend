@@ -1,10 +1,10 @@
 import request from "./axios";
 
 export default {
-  getProfileDetail() {
+  getProfileDetail(user_id) {
     return request({
       method: "get",
-      url: "/profile/3",
+      url: `/profile/${user_id}`,
     });
   },
 };
