@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { PlayIcon } from "../../assets";
 import * as S from "./styles";
 import ButtonBox from "./ButtonBox";
 import CardList from "./../common/OptionCardList/index";
 import { Music } from "./../../lib/interface/music";
 import { getDate } from "./../../lib/utils/getDate";
+import Comment from "./Comment";
 
 interface Props {
   music: Music;
@@ -40,10 +41,7 @@ const MusicDetail: FC<Props> = ({ music }) => {
           <ButtonBox like={music.like} song_id={music.song_id} />
         </S.Description>
       </S.Container>
-      <S.WriteComment
-        type="text"
-        placeholder="음악에 의견을 남겨주세요! (엔터키를 눌러 등록)"
-      />
+      <Comment comment_cnt={music.comment} />
       <CardList option="musicCardToMain" />
     </S.Wrapper>
   );
