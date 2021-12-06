@@ -67,7 +67,7 @@ const Header: FC<Props> = () => {
           />
           {isMenu && (
             <S.ProfileMenu>
-              <Link href="/profile/1">
+              <Link href={`/profile/${localStorage.getItem(USER_ID)}`}>
                 <div>프로필</div>
               </Link>
               <Link href="/me/wallet">
