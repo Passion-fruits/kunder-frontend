@@ -1,10 +1,10 @@
 import request from "./axios";
 
 export default {
-  getMusicDetail() {
+  getMusicDetail(song_id) {
     return request({
       method: "get",
-      url: "/song/10",
+      url: `/song/${song_id}`,
     });
   },
   getUserMusic({ user_id, page }) {

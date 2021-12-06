@@ -1,10 +1,10 @@
 import request from "./axios";
 
 export default {
-  getPlaylistDetail() {
+  getPlaylistDetail(playlist_id) {
     return request({
       method: "get",
-      url: "/playlist/3",
+      url: `/playlist/${playlist_id}`,
     });
   },
   getUserPlaylist({ user_id }) {

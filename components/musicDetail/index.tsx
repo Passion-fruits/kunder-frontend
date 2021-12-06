@@ -37,7 +37,7 @@ const MusicDetail: FC<Props> = ({ music }) => {
             <h1 className="title">아티스트의 말</h1>
             <p className="artist-talk">{music.description}</p>
           </S.ArtistTalkBox>
-          <ButtonBox like={music.like} />
+          <ButtonBox like={music.like} song_id={music.song_id} />
         </S.Description>
       </S.Container>
       <S.WriteComment

@@ -5,8 +5,9 @@ export default function musicDetail({ music }) {
   return <MusicDetail music={music} />;
 }
 
-export async function getServerSideProps() {
-  const musicInfor = (await music.getMusicDetail()).data;
+export async function getServerSideProps(context) {
+  const song_id = context.params.id;
+  const musicInfor = (await music.getMusicDetail(song_id)).data;
   return {
     props: {
       music: musicInfor,

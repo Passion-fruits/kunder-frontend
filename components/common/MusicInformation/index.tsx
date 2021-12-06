@@ -37,7 +37,7 @@ const MusicInformation: FC<Props> = ({
         <img src={music.cover_url} />
       </S.CoverWrap>
       <div className="title-artist-wrap">
-        <Link href="/music/1">
+        <Link href="/music/15">
           <h1>{music.title}</h1>
         </Link>
         <Link href="/profile/3">
