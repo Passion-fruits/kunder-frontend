@@ -6,6 +6,8 @@ import LoadingBar from "react-top-loading-bar";
 import { ColorMap } from "../styles/color";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/dist/client/router";
+import { Flip, ToastContainer } from "material-react-toastify";
+import "material-react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [pageLoading, setPageLoading] = useState<boolean>(false);
@@ -38,6 +40,18 @@ function MyApp({ Component, pageProps }: AppProps) {
         color={ColorMap.mainColor}
         ref={loadingBarRef}
         waitingTime={300}
+      />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Flip}
       />
       <Layout>
         <Component {...pageProps} />

@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { getContextValue } from "../../../lib/context";
 import AudioPlayer from "../AudioPlayer";
 import Header from "../Header";
@@ -13,6 +13,7 @@ const Layout: FC<Props> = ({ children }) => {
   const router = useRouter();
   const context = getContextValue();
   const modalState = context.modal;
+
   return (
     <>
       {modalState !== "none" && <Modal />}
