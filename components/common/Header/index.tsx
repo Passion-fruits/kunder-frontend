@@ -70,6 +70,9 @@ const Header: FC<Props> = () => {
               <Link href={`/profile/${localStorage.getItem(USER_ID)}`}>
                 <div>프로필</div>
               </Link>
+              <Link href="/music/upload">
+                <div>음악 업로드</div>
+              </Link>
               <Link href="/me/wallet">
                 <div>내 지갑</div>
               </Link>

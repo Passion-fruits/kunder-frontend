@@ -1,17 +1,59 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import * as S from "./styles";
 import Card from "./Card";
+import kdt from "../../lib/api/kdt";
+import { KdtCard, MyKdt } from "./../../lib/interface/kdt";
 
 interface Props {}
 
 const MyWallet: FC<Props> = () => {
   const coin = "별풍선";
-  const coinCnt = 60;
+  const [myKdt, setMyKdt] = useState<MyKdt>();
+  const coinCardArr: KdtCard[] = [
+    {
+      coinCnt: 10,
+      price: 1000,
+    },
+    {
+      coinCnt: 30,
+      price: 3000,
+    },
+    {
+      coinCnt: 50,
+      price: 5000,
+    },
+    {
+      coinCnt: 100,
+      price: 10000,
+    },
+    {
+      coinCnt: 200,
+      price: 20000,
+    },
+    {
+      coinCnt: 500,
+      price: 50000,
+    },
+  ];
+
+  useEffect(() => {
+    kdt.getMyKdt().then((res) => {
+      setMyKdt(res.data);
+    });
+  }, []);
   return (
     <S.Wrapper>
       <S.Top>
         <S.Title>
-          보유 {coin} <span className="highlight">{coinCnt}</span>개
+          보유 {coin}{" "}
+          {myKdt && (
+            <>
+              <span className="highlight">
+                {parseInt(myKdt.total_kdt) / Math.pow(10, 18)}
+              </span>
+              개
+            </>
+          )}
         </S.Title>
         <S.Explain>
           {coin}을 충전하여 <span className="gHighlight">아티스트를 후원</span>
@@ -25,12 +67,9 @@ const MyWallet: FC<Props> = () => {
       </S.Top>
       <hr className="line" />
       <S.CardList>
-        <Card coin={coin} coinNum={10} cost={1000} />
-        <Card coin={coin} coinNum={50} cost={6000} />
-        <Card coin={coin} coinNum={100} cost={12000} />
-        <Card coin={coin} coinNum={500} cost={60000} />
-        <Card coin={coin} coinNum={1000} cost={120000} />
-        <Card coin={coin} coinNum={2000} cost={240000} />
+        {coinCardArr.map((obj, index) => (
+          <Card coin={coin} coinNum={obj.coinCnt} cost={obj.price} />
+        ))}
       </S.CardList>
       <hr className="line" />
       <S.Bottom>

@@ -50,7 +50,7 @@ export const ProfileMenu = styled.div`
   flex-direction: column;
   overflow: hidden;
   & div {
-    padding: 15px 0;
+    padding: 10px 0;
     width: 100%;
     text-align: center;
     cursor: pointer;
