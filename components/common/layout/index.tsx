@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { getContextValue } from "../../../lib/context";
 import AudioPlayer from "../AudioPlayer";
 import Header from "../Header";

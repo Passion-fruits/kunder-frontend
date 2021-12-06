@@ -7,6 +7,7 @@ interface Props {}
 
 const Header: FC<Props> = () => {
   const [isScrollTop, setIsScrollTop] = useState<boolean>(true);
+  const [isMenu, setIsMenu] = useState<boolean>(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -14,6 +15,17 @@ const Header: FC<Props> = () => {
         setIsScrollTop(true);
       } else {
         setIsScrollTop(false);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (target.id === "profile-menu") {
+        setIsMenu(true);
+      } else {
+        setIsMenu(false);
       }
     });
   }, []);
@@ -31,10 +43,28 @@ const Header: FC<Props> = () => {
         <Link href="/">
           <h1 className="logo">KUNDER</h1>
         </Link>
-        <img
-          className="profile"
-          src="https://images.squarespace-cdn.com/content/v1/5ede5114b8b71f40bdb49cf0/1596824693321-GTM9D9J5ID9OK2LVQV33/Fine+Line"
-        />
+        <S.ProfileWrap>
+          <img
+            id="profile-menu"
+            src="https://images.squarespace-cdn.com/content/v1/5ede5114b8b71f40bdb49cf0/1596824693321-GTM9D9J5ID9OK2LVQV33/Fine+Line"
+          />
+          {isMenu && (
+            <S.ProfileMenu>
+              <Link href="/profile/1">
+                <div>프로필</div>
+              </Link>
+              <Link href="/me/wallet">
+                <div>내 지갑</div>
+              </Link>
+              <Link href="/me/support">
+                <div>후원 내역</div>
+              </Link>
+              <Link href="/">
+                <div>로그아웃</div>
+              </Link>
+            </S.ProfileMenu>
+          )}
+        </S.ProfileWrap>
       </S.Container>
     </S.Wrapper>
   );
