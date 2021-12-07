@@ -66,17 +66,17 @@ const Comment: FC<Props> = ({ comment_cnt }) => {
       />
       <S.CommentWrap>
         <span className="comment-cnt">댓글 {comment_cnt}개</span>
-        <S.Comment>
-          <img src="https://i.guim.co.uk/img/media/25ba79983d414405579567ebde7176600681ff81/0_466_2590_1553/master/2590.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=26221ae9b213bccadebbe491442b7e04" />
-          {commentArr.map((obj, index) => (
+        {commentArr.map((obj, index) => (
+          <S.Comment key={index}>
+            <img src={obj.profile} />
             <div>
               <span>
                 {obj.name} <time>{getDate(obj.created_at)}</time>
                 <p>{obj.comment_content}</p>
               </span>
             </div>
-          ))}
-        </S.Comment>
+          </S.Comment>
+        ))}
       </S.CommentWrap>
     </>
   );

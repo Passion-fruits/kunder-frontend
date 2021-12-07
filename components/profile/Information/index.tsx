@@ -11,6 +11,7 @@ import { setContextValue } from "./../../../lib/context/index";
 import { Profile } from "./../../../lib/interface/profile";
 import { useRouter } from "next/dist/client/router";
 import follow from "../../../lib/api/follow";
+import { USER_ID } from "../../../lib/api/export";
 
 interface Props {
   profile: Profile;
@@ -21,6 +22,7 @@ const Information: FC<Props> = ({ profile }) => {
   const router = useRouter();
   const user_id = router.query.id;
   const [isFollow, setIsFollow] = useState(false);
+  const [isMine, setIsMine] = useState(false);
 
   const onSupportModal = () => {
     dispatch({
@@ -56,7 +58,15 @@ const Information: FC<Props> = ({ profile }) => {
         setIsFollow(false);
       }
     });
-  }, []);
+  }, [router.query.id]);
+
+  useEffect(() => {
+    if (router.query.id === localStorage.getItem(USER_ID)) {
+      setIsMine(true);
+    } else {
+      setIsMine(false);
+    }
+  }, [router]);
 
   const requestFollow = () => {
     if (isFollow) {
@@ -75,9 +85,13 @@ const Information: FC<Props> = ({ profile }) => {
         <S.NameWrapper>
           <h1 className="nickname">{profile.name}</h1>
           <div className="button-wrap">
-            <button onClick={requestFollow}>
-              {isFollow ? "언팔로우" : "팔로우"}
-            </button>
+            {isMine ? (
+              <button>정보수정</button>
+            ) : (
+              <button onClick={requestFollow}>
+                {isFollow ? "언팔로우" : "팔로우"}
+              </button>
+            )}
             <button onClick={onSupportModal}>
               <CoinIcon size={18} /> 후원하기
             </button>

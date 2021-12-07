@@ -161,6 +161,8 @@ export const WriteComment = styled.input`
 export const CommentWrap = styled.div`
   margin-top: 30px;
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
   & .comment-cnt {
     color: ${ColorMap.grey200};
     font-size: 18px;
