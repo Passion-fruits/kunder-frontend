@@ -1,4 +1,5 @@
 import request from "./axios";
+import { ACCESS_TOKEN } from "./export";
 
 export default {
   getPlaylistDetail(playlist_id) {
@@ -11,6 +12,19 @@ export default {
     return request({
       method: "get",
       url: `/playlist/profile/${user_id}`,
+    });
+  },
+  createPlaylist(name) {
+    return request({
+      method: "post",
+      url: `/playlist`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      data: {
+        name: name,
+      },
     });
   },
 };

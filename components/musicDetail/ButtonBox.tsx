@@ -49,6 +49,13 @@ const ButtonBox: FC<Props> = ({ like, song_id }) => {
     setLikeCnt(parseInt(like));
   }, []);
 
+  const addPlaylist = () => {
+    dispatch({
+      type: "SET_MODAL",
+      modal: "playlist",
+    });
+  };
+
   return (
     <S.ButtonBox>
       <button className="base-btn">
@@ -64,7 +71,7 @@ const ButtonBox: FC<Props> = ({ like, song_id }) => {
         {likeCnt}
       </button>
       <div className="icon-box">
-        <button>
+        <button onClick={addPlaylist}>
           <AddPlaylistIcon size={20} />
         </button>
         <button>

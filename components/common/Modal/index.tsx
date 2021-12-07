@@ -4,6 +4,7 @@ import { getContextValue, setContextValue } from "./../../../lib/context/index";
 import Login from "./Login";
 import Signup from "./Signup";
 import Support from "./Support";
+import Playlist from "./Playlist";
 
 interface Props {}
 
@@ -31,6 +32,8 @@ const Modal: FC<Props> = () => {
             return <Signup />;
           case "support":
             return <Support />;
+          case "playlist":
+            return <Playlist />;
         }
       })()}
     </S.Wrapper>

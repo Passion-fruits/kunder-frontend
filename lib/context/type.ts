@@ -2,7 +2,7 @@ import { Dispatch } from "react";
 
 /* =========== 전역 type ===================== */
 
-export type ModalOption = "login" | "signUp" | "none" | "support";
+export type ModalOption = "login" | "signUp" | "none" | "support" | "playlist";
 
 /* =================================================== */
 
