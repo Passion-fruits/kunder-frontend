@@ -5,9 +5,10 @@ import MusicCardToChart from "../MusicCard/MusicCardToChart";
 import MusicCardToPlaylist from "../MusicCard/MusicCardToPlaylist";
 import PlaylistCard from "../PlaylistCard";
 import { Music } from "./../../../lib/interface/music";
+import { Playlist } from "./../../../lib/interface/playlist";
 
 interface Props {
-  data?: Music[] | any[];
+  data?: Music[] | Playlist[] | any[];
   option:
     | "musicCardToMain"
     | "musicCardToChart"
@@ -28,8 +29,8 @@ const CardList: FC<Props> = ({ data = [1, 2, 3, 4, 5, 6], option }: Props) => {
       )}
       {option === "playlistCard" && (
         <S.RowWrapper>
-          {data.map((e, index) => (
-            <PlaylistCard key={index} />
+          {data.map((obj, index) => (
+            <PlaylistCard key={index} playlist={obj} />
           ))}
         </S.RowWrapper>
       )}

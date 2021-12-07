@@ -22,7 +22,7 @@ const MusicCardToMain: FC<Props> = ({ music }) => {
         </S.MusicInformation>
         <img src={music.cover_url} />
       </S.MusicCoverWrap>
-      <Link href="/music/1">
+      <Link href={`/music/${music.song_id}`}>
         <h1 className="title text-overflow">{music.title}</h1>
       </Link>
       <Link href="/profile/3">

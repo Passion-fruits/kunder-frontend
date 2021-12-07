@@ -33,4 +33,10 @@ export default {
       data: fd,
     });
   },
+  getStream({ genre, page, sort,size }) {
+    return request({
+      method: "get",
+      url: `/song/stream?genre=${genre}&page=${page}&sort=${sort}&size=${size}`,
+    });
+  },
 };

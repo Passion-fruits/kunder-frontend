@@ -7,6 +7,7 @@ export interface Playlist {
   playlist_id: string;
   author: string;
   like: string;
+  user_id: string;
 }
 
 export interface PlaylistDetailType {

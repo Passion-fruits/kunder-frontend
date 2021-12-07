@@ -40,4 +40,10 @@ export default {
       },
     });
   },
+  getPopularPlaylist({ page, size }) {
+    return request({
+      method: "get",
+      url: `/playlist/popular?page=${page}&size=${size}`,
+    });
+  },
 };
