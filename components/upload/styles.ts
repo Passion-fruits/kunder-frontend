@@ -48,18 +48,19 @@ export const Mp3UploadWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-  & button {
+  & label div {
     color: ${ColorMap.red100};
     border: 1px solid ${ColorMap.red100};
     font-size: 16px;
+    padding: 8px 0px;
+    text-align: center;
     width: 100px;
-    height: 40px;
     border-radius: 5px;
+    cursor: pointer;
   }
   & span {
     color: ${ColorMap.blue100};
     font-size: 16px;
-    font-weight: 500;
   }
 `;
 

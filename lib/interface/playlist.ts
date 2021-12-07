@@ -1,4 +1,4 @@
-import { music } from "./music";
+import { Music } from "./music";
 
 export interface Playlist {
   name: string;
@@ -11,5 +11,5 @@ export interface Playlist {
 
 export interface PlaylistDetailType {
   playlist: Playlist;
-  songs: music[];
+  songs: Music[];
 }

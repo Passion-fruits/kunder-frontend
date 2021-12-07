@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import music from "../../../lib/api/music";
 import CardList from "../../common/OptionCardList";
 import * as S from "./styles";
+import { useRouter } from "next/dist/client/router";
 
 interface Props {
   user_id;
@@ -16,14 +17,14 @@ const MenuTab: FC<Props> = ({ user_id }) => {
 
   useEffect(() => {
     music
-      .getUserMusic({ user_id: 3, page: 1 })
+      .getUserMusic({ user_id: user_id, page: 1 })
       .then((res) => {
         setUserUploadData(res.data.songs);
       })
       .catch(() => {
         return;
       });
-  }, []);
+  }, [user_id]);
 
   return (
     <S.Wrapper>
