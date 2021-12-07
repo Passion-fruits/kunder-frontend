@@ -4,7 +4,7 @@ export interface Playlist {
   name: string;
   cover_url: string;
   created_at: Date;
-  user_id: string;
+  playlist_id: string;
   author: string;
   like: string;
 }

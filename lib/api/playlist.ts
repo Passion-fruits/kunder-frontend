@@ -27,4 +27,17 @@ export default {
       },
     });
   },
+  addMusicToPlaylist({ song_id, playlist_id }) {
+    return request({
+      method: "post",
+      url: `/playlist/${playlist_id}`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      data: {
+        song_id: parseInt(song_id),
+      },
+    });
+  },
 };

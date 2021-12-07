@@ -11,6 +11,11 @@ function reducer(state: State, action: Action): State {
         ...state,
         modal: action.modal,
       };
+    case "SET_SONG_ID":
+      return {
+        ...state,
+        song_id: action.song_id,
+      };
     default:
       throw new Error("Unhandled action");
   }
@@ -19,6 +24,7 @@ function reducer(state: State, action: Action): State {
 export function ContextProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, {
     modal: "none",
+    song_id: null,
   });
   return (
     <StateContext.Provider value={state}>

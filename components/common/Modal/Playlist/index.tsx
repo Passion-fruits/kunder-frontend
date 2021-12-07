@@ -5,12 +5,16 @@ import playlist from "../../../../lib/api/playlist";
 import { USER_ID } from "../../../../lib/api/export";
 import { Playlist } from "./../../../../lib/interface/playlist";
 import { toast } from "material-react-toastify";
+import { getContextValue, setContextValue } from "../../../../lib/context";
 
 interface Props {}
 
 const Playlist: FC<Props> = () => {
   const [playlistArr, setPlaylistArr] = useState<Playlist[]>([]);
   const [isAdd, setIsAdd] = useState(false);
+  const contextObj = getContextValue();
+  const song_id = contextObj.song_id;
+  const dispatch = setContextValue();
 
   const getPlaylist = () => {
     playlist
@@ -38,13 +42,32 @@ const Playlist: FC<Props> = () => {
     }
   };
 
+  const addMusic = (playlist_id) => {
+    playlist
+      .addMusicToPlaylist({ song_id: song_id, playlist_id: playlist_id })
+      .then((res) => {
+        toast.success("🙌 음악을 추가하였습니다.");
+        dispatch({
+          type: "SET_MODAL",
+          modal: "none",
+        });
+      })
+      .catch((err) => {
+        if (err.response.status === 400) {
+          toast.info("👀 이미 플레이리스트에 존재합니다.");
+        }
+      });
+  };
+
   useEffect(() => {
     getPlaylist();
   }, []);
   return (
     <Wrapper>
       {playlistArr.map((playlist, index) => (
-        <button key={index}>{playlist.name}</button>
+        <button key={index} onClick={() => addMusic(playlist.playlist_id)}>
+          {playlist.name}
+        </button>
       ))}
       {playlistArr.length === 0 && <div>플레이리스트가 없습니다.</div>}
       {isAdd ? (

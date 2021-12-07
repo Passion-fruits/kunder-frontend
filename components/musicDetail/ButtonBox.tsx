@@ -9,6 +9,7 @@ import {
 import * as S from "./styles";
 import { setContextValue } from "./../../lib/context/index";
 import likeApi from "../../lib/api/like";
+import { useRouter } from "next/dist/client/router";
 
 interface Props {
   like: string;
@@ -17,6 +18,7 @@ interface Props {
 
 const ButtonBox: FC<Props> = ({ like, song_id }) => {
   const dispatch = setContextValue();
+  const router = useRouter();
   const [isLike, setIsLike] = useState(false);
   const [likeCnt, setLikeCnt] = useState(0);
 
@@ -53,6 +55,10 @@ const ButtonBox: FC<Props> = ({ like, song_id }) => {
     dispatch({
       type: "SET_MODAL",
       modal: "playlist",
+    });
+    dispatch({
+      type: "SET_SONG_ID",
+      song_id: router.query.id,
     });
   };
 
