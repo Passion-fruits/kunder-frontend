@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { PlayIcon } from "../../assets";
 import * as S from "./styles";
 import ButtonBox from "./ButtonBox";
@@ -6,12 +6,24 @@ import CardList from "./../common/OptionCardList/index";
 import { Music } from "./../../lib/interface/music";
 import { getDate } from "./../../lib/utils/getDate";
 import Comment from "./Comment";
+import { useRouter } from "next/dist/client/router";
+import recommend from "../../lib/api/recommend";
 
 interface Props {
   music: Music;
 }
 
 const MusicDetail: FC<Props> = ({ music }) => {
+  const router = useRouter();
+  const song_id = router.query.id;
+  const [similarMusic, setSimilarMusic] = useState([]);
+
+  useEffect(() => {
+    recommend.getSimilarMusic({ song_id: song_id, size: 6 }).then((res) => {
+      setSimilarMusic(res.data);
+    });
+  }, [song_id]);
+
   return (
     <S.Wrapper>
       <S.Container>
@@ -42,7 +54,7 @@ const MusicDetail: FC<Props> = ({ music }) => {
         </S.Description>
       </S.Container>
       <Comment comment_cnt={music.comment} />
-      <CardList option="musicCardToMain" />
+      <CardList option="musicCardToMain" data={similarMusic} />
     </S.Wrapper>
   );
 };
