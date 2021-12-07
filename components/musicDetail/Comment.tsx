@@ -24,7 +24,7 @@ const Comment: FC<Props> = ({ comment_cnt }) => {
       })
       .catch(() => {
         // none comment
-        return;
+        setCommentArr([]);
       });
   };
 
@@ -54,7 +54,7 @@ const Comment: FC<Props> = ({ comment_cnt }) => {
 
   useEffect(() => {
     getComment();
-  }, []);
+  }, [song_id]);
 
   return (
     <>
