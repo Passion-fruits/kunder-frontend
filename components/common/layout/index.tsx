@@ -21,7 +21,7 @@ const Layout: FC<Props> = ({ children }) => {
       router.push("/auth");
       toast.info("😢 로그인 후 이용해주세요!");
     }
-  }, []);
+  }, [router.pathname]);
 
   return (
     <>
