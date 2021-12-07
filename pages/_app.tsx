@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (pageLoading) {
-      loadingBarRef.current.staticStart();
+      loadingBarRef.current.continuousStart();
     } else {
       loadingBarRef.current.complete();
     }
