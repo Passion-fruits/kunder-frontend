@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler } from "react";
+import { ChangeEvent } from "react";
 
 interface returnValue {
   file: File;
