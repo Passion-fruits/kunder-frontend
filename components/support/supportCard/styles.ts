@@ -20,12 +20,12 @@ export const Wrapper = styled.div`
 
 export const FlexWrap = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   width: 100%;
-  & p {
+  & .kdt-infor {
     font-size: 18px;
-    color: ${ColorMap.grey000};
+    color: ${ColorMap.grey200};
     display: flex;
     align-items: center;
     & b {
@@ -44,6 +44,11 @@ export const FlexWrap = styled.div`
     font-weight: 500;
     padding: 5px 15px;
     border-radius: 3px;
+  }
+  & .question {
+    font-size: 17px;
+    color: ${ColorMap.grey000};
+    margin-top: 10px;
   }
 `;
 

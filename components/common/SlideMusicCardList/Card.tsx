@@ -20,7 +20,7 @@ const Card: FC<Props> = ({ currentShow, setCurrentIndex, index }) => {
         <button>
           <PlayIcon size={23} />
         </button>
-        <img src="https://i.pinimg.com/originals/3a/f0/e5/3af0e55ea66ea69e35145fb108b4a636.jpg" />
+        <img src="https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover?fimg-ssr-default" />
       </CoverWrap>
       <h1 className="music-title text-overflow">Blinding lights</h1>
       <h3 className="artist text-overflow">The weekend</h3>
@@ -49,7 +49,7 @@ const CardWrap = styled.div<{ currentShow: boolean }>`
     text-align: center;
   }
   & .artist {
-    font-size: ${(res) => (res.currentShow ? "16px" : "14px")};
+    font-size: ${(res) => (res.currentShow ? "16px" : "13px")};
     font-weight: 400;
     color: ${ColorMap.grey300};
     margin-top: 2px;
@@ -61,8 +61,8 @@ const CoverWrap = styled.div<{ currentShow: boolean }>`
   transition: 0.5s;
   width: ${(res) => (res.currentShow ? large_width : small_width)};
   height: ${(res) => (res.currentShow ? large_width : small_width)};
-  border-radius: 5px;
   overflow: hidden;
+  border-radius: 10px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -72,12 +72,15 @@ const CoverWrap = styled.div<{ currentShow: boolean }>`
     height: 100%;
   }
   & button {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    border: 2px solid ${ColorMap.grey000};
     background-color: rgb(0, 0, 0, 0.5);
     position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    transition: 300ms;
     & svg {
       margin-left: 8px;
       margin-top: 2px;

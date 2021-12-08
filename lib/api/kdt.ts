@@ -12,4 +12,24 @@ export default {
       },
     });
   },
+  getMySupport({ done, size, page }) {
+    return request({
+      method: "get",
+      url: `/kdt/history/donate?done=${done}&size=${size}&page=${page}`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+    });
+  },
+  getIsSupported({ done, size, page }) {
+    return request({
+      method: "get",
+      url: `/kdt/history/answer?done=${done}&size=${size}&page=${page}`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+    });
+  },
 };

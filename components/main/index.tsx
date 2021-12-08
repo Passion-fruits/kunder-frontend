@@ -6,7 +6,6 @@ import { Music } from "../../lib/interface/music";
 import { Playlist } from "./../../lib/interface/playlist";
 import music from "../../lib/api/music";
 import playlist from "../../lib/api/playlist";
-import SlideCardList from "../common/SlideMusicCardList";
 
 interface Props {}
 
@@ -24,7 +23,6 @@ const Main: FC<Props> = () => {
   return (
     <S.Wrapper>
       {/*       <ChartTab /> */}
-      {/*       <SlideCardList /> */}
       <S.CardListWrap>
         <h1 className="list-title">인기 음악을 만나보세요!</h1>
         <CardList option="musicCardToMain" data={popularMusic} />
