@@ -2,14 +2,16 @@ import { FC } from "react";
 import { PlayIcon } from "../../../assets";
 import styled from "@emotion/styled";
 import { ColorMap } from "../../../styles/color";
+import { Music } from "../../../lib/interface/music";
 
 interface Props {
   currentShow: boolean;
   setCurrentIndex(params: number): void;
   index: number;
+  music: Music;
 }
 
-const Card: FC<Props> = ({ currentShow, setCurrentIndex, index }) => {
+const Card: FC<Props> = ({ currentShow, setCurrentIndex, index, music }) => {
   return (
     <CardWrap
       currentShow={currentShow}
@@ -20,10 +22,10 @@ const Card: FC<Props> = ({ currentShow, setCurrentIndex, index }) => {
         <button>
           <PlayIcon size={23} />
         </button>
-        <img src="https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover?fimg-ssr-default" />
+        <img src={music.cover_url} />
       </CoverWrap>
-      <h1 className="music-title text-overflow">Blinding lights</h1>
-      <h3 className="artist text-overflow">The weekend</h3>
+      <h1 className="music-title text-overflow">{music.title}</h1>
+      <h3 className="artist text-overflow">{music.artist}</h3>
     </CardWrap>
   );
 };
