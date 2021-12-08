@@ -13,9 +13,9 @@ const MusicInformation: FC<Props> = ({
   type,
   music = {
     cover_url:
-      "https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg",
-    title: "제목",
-    artist: "아티스트",
+      "https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover?fimg-ssr-default",
+    title: "Lose Yourself by Eminem | Eminem",
+    artist: "블랙넛",
   },
 }) => {
   return (
@@ -38,7 +38,7 @@ const MusicInformation: FC<Props> = ({
       </S.CoverWrap>
       <div className="title-artist-wrap">
         <Link href="/music/15">
-          <h1>{music.title}</h1>
+          <h1 className="text-overflow">{music.title}</h1>
         </Link>
         <Link href="/profile/3">
           <h3>{music.artist}</h3>

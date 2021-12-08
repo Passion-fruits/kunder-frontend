@@ -22,7 +22,7 @@ const Main: FC<Props> = () => {
   }, []);
   return (
     <S.Wrapper>
-      {/*       <ChartTab /> */}
+      <ChartTab />
       <S.CardListWrap>
         <h1 className="list-title">인기 음악을 만나보세요!</h1>
         <CardList option="musicCardToMain" data={popularMusic} />
