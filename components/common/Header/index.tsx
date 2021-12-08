@@ -9,12 +9,15 @@ import {
   USER_ID,
 } from "./../../../lib/api/export";
 import { toast } from "material-react-toastify";
+import { Profile } from "./../../../lib/interface/profile";
+import profileApi from "../../../lib/api/profile";
 
 interface Props {}
 
 const Header: FC<Props> = () => {
   const [isScrollTop, setIsScrollTop] = useState<boolean>(true);
   const [isMenu, setIsMenu] = useState<boolean>(false);
+  const [profile, setProfile] = useState<Profile>();
   const router = useRouter();
 
   useEffect(() => {
@@ -39,6 +42,14 @@ const Header: FC<Props> = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const user_id = localStorage.getItem(USER_ID);
+    user_id &&
+      profileApi.getProfileDetail(user_id).then((res) => {
+        setProfile(res.data);
+      });
+  }, []);
+
   const logout = () => {
     localStorage.setItem(ACCESS_TOKEN, "");
     localStorage.setItem(REFRESH_TOKEN, "");
@@ -61,10 +72,7 @@ const Header: FC<Props> = () => {
           <h1 className="logo">KUNDER</h1>
         </Link>
         <S.ProfileWrap>
-          <img
-            id="profile-menu"
-            src="https://images.squarespace-cdn.com/content/v1/5ede5114b8b71f40bdb49cf0/1596824693321-GTM9D9J5ID9OK2LVQV33/Fine+Line"
-          />
+          {profile && <img id="profile-menu" src={profile.profile} />}
           {isMenu && (
             <S.ProfileMenu>
               <Link href={`/profile/${localStorage.getItem(USER_ID)}`}>

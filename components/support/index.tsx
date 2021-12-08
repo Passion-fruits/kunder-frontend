@@ -62,7 +62,7 @@ const Support: FC<Props> = () => {
         setIsDone={setIsDone}
       />
       <SupportCard type={type} data={supportData} />
-      {supportData.length === 0 && <S.None>내역이 없습니다</S.None>}
+      {supportData.length === 0 && !loading && <S.None>내역이 없습니다</S.None>}
       {loading && (
         <S.LoadingWrap>
           <LoadingSpinner size={50} />
