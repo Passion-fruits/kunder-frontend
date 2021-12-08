@@ -8,7 +8,7 @@ interface Props {
 }
 
 const LoadingSpinner: FC<Props> = ({ size }) => {
-  return <Loader type="Oval" color={ColorMap.grey000} width={size} />;
+  return <Loader type="ThreeDots" color={ColorMap.mainColor} width={size} />;
 };
 
 export default LoadingSpinner;

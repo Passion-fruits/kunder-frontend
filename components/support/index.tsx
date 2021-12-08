@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import kdt from "../../lib/api/kdt";
 import { SupportCardType } from "../../lib/interface/kdt";
+import LoadingSpinner from "../common/LoadingSpinner";
 import SelectBar from "./selectBar";
 import * as S from "./styles";
 import SupportCard from "./supportCard/index";
@@ -12,6 +13,7 @@ interface Props {}
 const Support: FC<Props> = () => {
   const [supportType, setSupportType] = useState<SupportType>("mySupport");
   const [isDone, setIsDone] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [type, setType] = useState<number>(1);
   /**
    * type
@@ -23,14 +25,17 @@ const Support: FC<Props> = () => {
   const [supportData, setSupportData] = useState<SupportCardType[]>([]);
 
   useEffect(() => {
+    setLoading(true);
     if (supportType === "mySupport") {
       setType(1 + isDone);
       kdt
         .getMySupport({ page: 1, size: 10, done: isDone })
         .then((res) => {
           setSupportData(res.data.history);
+          setLoading(false);
         })
         .catch((err) => {
+          setLoading(false);
           return;
         });
     } else {
@@ -38,15 +43,15 @@ const Support: FC<Props> = () => {
       kdt
         .getIsSupported({ page: 1, size: 10, done: isDone })
         .then((res) => {
+          setLoading(false);
           setSupportData(res.data.history);
         })
         .catch((err) => {
+          setLoading(false);
           return;
         });
     }
   }, [isDone, supportType]);
-
-  console.log(supportData);
 
   return (
     <S.Wrapper>
@@ -57,6 +62,12 @@ const Support: FC<Props> = () => {
         setIsDone={setIsDone}
       />
       <SupportCard type={type} data={supportData} />
+      {supportData.length === 0 && <S.None>내역이 없습니다</S.None>}
+      {loading && (
+        <S.LoadingWrap>
+          <LoadingSpinner size={50} />
+        </S.LoadingWrap>
+      )}
     </S.Wrapper>
   );
 };
