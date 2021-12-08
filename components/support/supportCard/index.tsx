@@ -1,6 +1,9 @@
-import { FC } from "react";
+import { FC, useRef, useState } from "react";
 import * as S from "./styles";
 import { SupportCardType } from "./../../../lib/interface/kdt";
+import kdt from "../../../lib/api/kdt";
+import { AxiosError } from "axios";
+import { toast } from "material-react-toastify";
 
 const KdtCntMent = ({ complete, kdt_cnt, question }) => {
   return (
@@ -65,6 +68,37 @@ interface Props {
 }
 
 const SupportCard: FC<Props> = ({ type, data }) => {
+  const [loading, setLoading] = useState(false);
+  type FuncProps = {
+    event: any;
+    obj: SupportCardType;
+    index: number;
+  };
+
+  const answerForSupport = ({ event, obj, index }: FuncProps) => {
+    if (event.keyCode === 13) {
+      if (loading) return;
+      toast.info("🙌 정상 처리중입니다");
+      setLoading(true);
+      kdt
+        .answerForSupport({
+          msg_id: obj.message_id,
+          answer: event.target.value,
+          donate_user_id: obj.user_id,
+        })
+        .then((res) => {
+          toast.success(`😊 ${obj.amount}kdt를 받았습니다!`);
+          data.slice(index, 1);
+          setLoading(false);
+        })
+        .catch((err: AxiosError) => {
+          if (err.response.status === 400) {
+            toast.error("😢 답장을 입력해주세요");
+          }
+          setLoading(false);
+        });
+    }
+  };
   return (
     <S.CardListWrapper>
       {data.map((obj, index) => (
@@ -105,7 +139,12 @@ const SupportCard: FC<Props> = ({ type, data }) => {
                 name={obj.name}
                 kdt_cnt={obj.amount}
               />
-              <S.AnswerInput placeholder="답장을 입력하고 별풍선을 받아가세요!" />
+              <S.AnswerInput
+                placeholder="답장을 입력하고 별풍선을 받아가세요!"
+                onKeyDown={(event) =>
+                  answerForSupport({ event: event, obj: obj, index: index })
+                }
+              />
             </>
           ) : (
             <>
