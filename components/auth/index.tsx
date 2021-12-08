@@ -1,7 +1,7 @@
 import { FC } from "react";
-import ShowMusic from "./ShowMusic";
 import * as S from "./styles";
 import { setContextValue } from "./../../lib/context/index";
+import SlideCardList from "../common/SlideMusicCardList";
 
 interface Props {}
 
@@ -22,7 +22,7 @@ const Auth: FC<Props> = () => {
         <button onClick={openLoginModal}>로그인/가입</button>
         <button>서비스 소개</button>
       </S.ButtonWrap>
-      <ShowMusic />
+      <SlideCardList />
     </S.Wrapper>
   );
 };
