@@ -14,9 +14,10 @@ import { useRouter } from "next/dist/client/router";
 interface Props {
   like: string;
   song_id;
+  playMusic(): void;
 }
 
-const ButtonBox: FC<Props> = ({ like, song_id }) => {
+const ButtonBox: FC<Props> = ({ like, song_id, playMusic }) => {
   const dispatch = setContextValue();
   const router = useRouter();
   const [isLike, setIsLike] = useState(false);
@@ -33,11 +34,15 @@ const ButtonBox: FC<Props> = ({ like, song_id }) => {
     if (isLike) {
       setIsLike(false);
       setLikeCnt(likeCnt - 1);
-      likeApi.musicUnLike(song_id);
+      likeApi.musicUnLike(song_id).catch(() => {
+        return;
+      });
     } else {
       setIsLike(true);
       setLikeCnt(likeCnt + 1);
-      likeApi.musicLike(song_id);
+      likeApi.musicLike(song_id).catch(() => {
+        return;
+      });
     }
   };
 
@@ -64,7 +69,7 @@ const ButtonBox: FC<Props> = ({ like, song_id }) => {
 
   return (
     <S.ButtonBox>
-      <button className="base-btn">
+      <button className="base-btn" onClick={playMusic}>
         <PlayIcon size={13} />
         음악 듣기
       </button>

@@ -9,6 +9,7 @@ import Comment from "./Comment";
 import { useRouter } from "next/dist/client/router";
 import recommend from "../../lib/api/recommend";
 import LoadImage from "../common/LoadImage";
+import { setContextValue } from "../../lib/context";
 
 interface Props {
   music: Music;
@@ -16,6 +17,7 @@ interface Props {
 
 const MusicDetail: FC<Props> = ({ music }) => {
   const router = useRouter();
+  const dispatch = setContextValue();
   const song_id = router.query.id;
   const [similarMusic, setSimilarMusic] = useState([]);
 
@@ -24,6 +26,13 @@ const MusicDetail: FC<Props> = ({ music }) => {
       setSimilarMusic(res.data);
     });
   }, [song_id]);
+
+  const playMusic = () => {
+    dispatch({
+      type: "SET_MUSIC",
+      music: music,
+    });
+  };
 
   return (
     <S.Wrapper>
@@ -51,7 +60,11 @@ const MusicDetail: FC<Props> = ({ music }) => {
             <h1 className="title">아티스트의 말</h1>
             <p className="artist-talk">{music.description}</p>
           </S.ArtistTalkBox>
-          <ButtonBox like={music.like} song_id={music.song_id} />
+          <ButtonBox
+            like={music.like}
+            song_id={music.song_id}
+            playMusic={playMusic}
+          />
         </S.Description>
       </S.Container>
       <Comment comment_cnt={music.comment} />

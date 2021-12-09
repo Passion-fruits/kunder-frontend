@@ -30,6 +30,9 @@ export const MusicInformation = styled.div`
       font-weight: 500;
       cursor: pointer;
       width: 300px;
+      &:hover {
+        color: ${ColorMap.mainColor};
+      }
     }
     & h3 {
       font-size: 13px;
@@ -37,6 +40,9 @@ export const MusicInformation = styled.div`
       color: ${ColorMap.grey200};
       margin-top: 2px;
       cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;
