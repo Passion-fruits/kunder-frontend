@@ -4,6 +4,7 @@ import PlayButton from "../../PlayButton";
 import * as S from "./styles";
 import Link from "next/link";
 import { Music } from "./../../../../lib/interface/music";
+import LoadImage from "../../LoadImage";
 
 interface Props {
   music: Music;
@@ -20,7 +21,7 @@ const MusicCardToMain: FC<Props> = ({ music }) => {
           </div>
           <PlayButton />
         </S.MusicInformation>
-        <img src={music.cover_url} />
+        <LoadImage src={music.cover_url} border_radius="basic" />
       </S.MusicCoverWrap>
       <Link href={`/music/${music.song_id}`}>
         <h1 className="title text-overflow">{music.title}</h1>
