@@ -4,10 +4,12 @@ import ShowMusicCard from "./Card";
 import { Music } from "../../../lib/interface/music";
 
 interface Props {
-  data?: Music[];
+  data?: Music[] | number[];
 }
 
-const SlideCardList: FC<Props> = ({ data }) => {
+const SlideCardList: FC<Props> = ({
+  data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+}) => {
   const [currentCardIndex, setCurrentCardIndex] = useState<number>(4);
 
   useEffect(() => {

@@ -16,11 +16,11 @@ const LoadImage: FC<Props> = (params) => {
     img.onload = () => {
       setOnLoad(true);
     };
-  }, []);
+  }, [params.src]);
 
   return (
     <Img
-      src={onLoad ? params.src : "none_data.png"}
+      src={onLoad ? params.src : "/none_data.png"}
       width={params.size}
       border_radius={params.border_radius}
     />

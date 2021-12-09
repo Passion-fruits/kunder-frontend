@@ -3,6 +3,7 @@ import PlayButton from "../PlayButton";
 import * as S from "./styles";
 import Link from "next/link";
 import { Playlist } from "./../../../lib/interface/playlist";
+import LoadImage from "../LoadImage";
 
 interface Props {
   playlist: Playlist;
@@ -12,7 +13,7 @@ const PlaylistCard: FC<Props> = ({ playlist }) => {
   return (
     <S.Wrapper>
       <S.CoverImageWrapper>
-        <img src={playlist.cover_url} />
+        <LoadImage src={playlist.cover_url} border_radius="basic" />
         <PlayButton />
       </S.CoverImageWrapper>
       <Link href={`/playlist/${playlist.playlist_id}`}>

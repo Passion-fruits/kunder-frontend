@@ -3,6 +3,7 @@ import * as S from "./styles";
 import { ChartArrowIcon, PlayIcon } from "../../../assets";
 import Link from "next/link";
 import { MusicInformation } from "./../../../lib/interface/music";
+import LoadImage from "../LoadImage";
 
 interface Props {
   type: "playlist" | "chart" | "audioPlayer";
@@ -34,7 +35,7 @@ const MusicInformation: FC<Props> = ({
         <button className="play-cover">
           <PlayIcon size={18} />
         </button>
-        <img src={music.cover_url} />
+        <LoadImage src={music.cover_url} border_radius="basic" />
       </S.CoverWrap>
       <div className="title-artist-wrap">
         <Link href="/music/15">

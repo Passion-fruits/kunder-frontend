@@ -10,8 +10,8 @@ import playlist from "../../lib/api/playlist";
 interface Props {}
 
 const Main: FC<Props> = () => {
-  const [popularMusic, setPopularMusic] = useState<Music[]>([]);
-  const [popularPlaylist, setPopularPlaylist] = useState<Playlist[]>([]);
+  const [popularMusic, setPopularMusic] = useState<Music[]>();
+  const [popularPlaylist, setPopularPlaylist] = useState<Playlist[]>();
   useEffect(() => {
     music.getStream({ genre: 3, page: 1, sort: 1, size: 6 }).then((res) => {
       setPopularMusic(res.data.songs);

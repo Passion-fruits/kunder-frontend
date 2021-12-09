@@ -8,6 +8,7 @@ import { getDate } from "./../../lib/utils/getDate";
 import Comment from "./Comment";
 import { useRouter } from "next/dist/client/router";
 import recommend from "../../lib/api/recommend";
+import LoadImage from "../common/LoadImage";
 
 interface Props {
   music: Music;
@@ -16,7 +17,7 @@ interface Props {
 const MusicDetail: FC<Props> = ({ music }) => {
   const router = useRouter();
   const song_id = router.query.id;
-  const [similarMusic, setSimilarMusic] = useState([]);
+  const [similarMusic, setSimilarMusic] = useState();
 
   useEffect(() => {
     recommend.getSimilarMusic({ song_id: song_id, size: 6 }).then((res) => {
@@ -28,7 +29,7 @@ const MusicDetail: FC<Props> = ({ music }) => {
     <S.Wrapper>
       <S.Container>
         <S.AlbumImageBox>
-          <img src={music.cover_url} />
+          <LoadImage src={music.cover_url} border_radius="basic" />
         </S.AlbumImageBox>
         <S.Description>
           <S.TitleBox>

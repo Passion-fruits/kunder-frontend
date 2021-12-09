@@ -5,6 +5,7 @@ import { PlaylistDetailType } from "../../lib/interface/playlist";
 import CardList from "../common/OptionCardList";
 import * as S from "./styles";
 import { useRouter } from "next/dist/client/router";
+import LoadImage from "../common/LoadImage";
 
 interface Props {
   playlistDetailInfor: PlaylistDetailType;
@@ -44,7 +45,7 @@ const PlaylistDetail: FC<Props> = ({
     <S.Wrapper>
       <S.PlaylistInformation>
         <S.CoverImageWrapper>
-          <img src={playlist.cover_url} />
+          <LoadImage src={playlist.cover_url} border_radius="basic" />
         </S.CoverImageWrapper>
         <h1 className="playlist-title text-overflow">{playlist.name}</h1>
         <h3 className="playlist-maker">{playlist.author}</h3>

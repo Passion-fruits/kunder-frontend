@@ -42,6 +42,7 @@ export const CoverImageWrapper = styled.div`
     width: 420px;
     height: 420px;
     box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.2);
+    border-radius: 0px;
   }
 `;
 

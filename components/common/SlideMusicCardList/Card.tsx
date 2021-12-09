@@ -3,6 +3,7 @@ import { PlayIcon } from "../../../assets";
 import styled from "@emotion/styled";
 import { ColorMap } from "../../../styles/color";
 import { Music } from "../../../lib/interface/music";
+import LoadImage from "../LoadImage";
 
 interface Props {
   currentShow: boolean;
@@ -22,7 +23,7 @@ const Card: FC<Props> = ({ currentShow, setCurrentIndex, index, music }) => {
         <button>
           <PlayIcon size={23} />
         </button>
-        <img src={music.cover_url} />
+        <LoadImage src={music.cover_url} border_radius="basic" />
       </CoverWrap>
       <h1 className="music-title text-overflow">{music.title}</h1>
       <h3 className="artist text-overflow">{music.artist}</h3>
