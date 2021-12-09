@@ -28,39 +28,15 @@ const AudioPlayerButtonTab: FC<Props> = (res) => {
     });
   };
 
-  const getIsLike = () => {
-    like.getIsMusicLike(res.music.song_id).then((res) => {
-      setIsLike(res.data.is_like);
-    });
-  };
-
   const requestLike = () => {
-    if (res.music) {
-      if (isLike) {
-        setIsLike(false);
-        like
-          .musicUnLike(res.music.song_id)
-          .then(() => {})
-          .catch(() => {
-            return;
-          });
-      } else {
-        setIsLike(true);
-        like
-          .musicLike(res.music.song_id)
-          .then(() => {})
-          .catch(() => {
-            return;
-          });
-      }
-    }
+    setIsLike(true);
+    like
+      .musicLike(res.music.song_id)
+      .then(() => {})
+      .catch(() => {
+        return;
+      });
   };
-
-  useEffect(() => {
-    if (res.music) {
-      getIsLike();
-    }
-  }, [res.music]);
 
   return (
     <S.ControlButtonWrapper>

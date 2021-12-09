@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { PlayIcon } from "../../../assets";
 import { setContextValue } from "../../../lib/context";
 import { Music } from "../../../lib/interface/music";
@@ -11,7 +11,8 @@ interface Props {
 
 const PlayButton: FC<Props> = ({ music, type }) => {
   const dispatch = setContextValue();
-  const playMusic = () => {
+  const playMusic = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     dispatch({
       type: "SET_MUSIC",
       music: music,

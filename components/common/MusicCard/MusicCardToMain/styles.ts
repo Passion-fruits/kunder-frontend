@@ -40,6 +40,7 @@ export const MusicCoverWrap = styled.div`
   & img {
     width: 100%;
     height: 100%;
+    cursor: pointer;
   }
 `;
 
@@ -50,6 +51,7 @@ export const MusicInformation = styled.div`
   z-index: 2;
   padding: 10px;
   display: flex;
+  cursor: pointer;
   & .show-cnt {
     border-radius: 3px;
     color: ${ColorMap.grey000};
