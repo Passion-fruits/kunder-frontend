@@ -35,7 +35,7 @@ export default {
   getIsPlaylistLike(playlist_id) {
     return request({
       method: "get",
-      url: `/like/playlist/${playlist_id}`,
+      url: `/like/playlist?playlist_id=${playlist_id}`,
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,

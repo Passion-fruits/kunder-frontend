@@ -37,11 +37,11 @@ export const CoverImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3e67ad;
+  /*   background-color: #3e67ad; */
   & img {
     width: 420px;
     height: 420px;
-    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 40px rgb(0, 0, 0, 0.5);
     border-radius: 0px;
   }
 `;

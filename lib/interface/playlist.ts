@@ -8,6 +8,7 @@ export interface Playlist {
   author: string;
   like: string;
   user_id: string;
+  color_hex: string;
 }
 
 export interface PlaylistDetailType {
