@@ -35,14 +35,14 @@ const CardList: FC<Props> = ({ data = [], option }: Props) => {
         </S.RowWrapper>
       )}
       {option === "musicCardToPlaylist" && (
-        <S.ColumnWrapper>
+        <S.ColumnWrapper gap={25}>
           {data.map((obj, index) => (
-            <MusicCardToPlaylist key={index} music={obj} />
+            <MusicCardToPlaylist key={index} music={obj} index={index} />
           ))}
         </S.ColumnWrapper>
       )}
       {option === "musicCardToChart" && (
-        <S.ColumnWrapper>
+        <S.ColumnWrapper gap={35}>
           {[1, 2, 3, 4, 5].map((e, index) => (
             <MusicCardToChart key={index} />
           ))}

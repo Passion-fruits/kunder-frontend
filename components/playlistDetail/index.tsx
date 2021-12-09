@@ -44,7 +44,11 @@ const PlaylistDetail: FC<Props> = ({
   return (
     <S.Wrapper>
       <S.PlaylistInformation>
-        <S.CoverImageWrapper style={{ background: `#${playlist.color_hex}` }}>
+        <S.CoverImageWrapper>
+          <div
+            style={{ border: `60px solid #${playlist.color_hex}` }}
+            className="line"
+          />
           <LoadImage src={playlist.cover_url} border_radius="basic" />
         </S.CoverImageWrapper>
         <h1 className="playlist-title text-overflow">{playlist.name}</h1>

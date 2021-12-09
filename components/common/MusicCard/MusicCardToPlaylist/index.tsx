@@ -6,12 +6,13 @@ import { Music } from "./../../../../lib/interface/music";
 
 interface Props {
   music: Music;
+  index: number;
 }
 
-const MusicCardToPlaylist: FC<Props> = ({ music }) => {
+const MusicCardToPlaylist: FC<Props> = ({ music, index }) => {
   return (
     <S.Wrapper>
-      <MusicInformation type="playlist" music={music} />
+      <MusicInformation type="playlist" music={music} index={index} />
       <S.ControlBtnWrap>
         <button>
           <PlayIcon size={18} />

@@ -4,7 +4,6 @@ import * as S from "./styles";
 import Link from "next/link";
 import { Playlist } from "./../../../lib/interface/playlist";
 import LoadImage from "../LoadImage";
-import { getDate } from "./../../../lib/utils/getDate";
 
 interface Props {
   playlist: Playlist;
