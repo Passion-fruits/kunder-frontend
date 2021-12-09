@@ -26,4 +26,17 @@ export default {
       },
     });
   },
+  updateProfileCover(file) {
+    const fd = new FormData();
+    fd.append("image", file);
+    return request({
+      method: "put",
+      url: `/profile/image`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      data: fd,
+    });
+  },
 };

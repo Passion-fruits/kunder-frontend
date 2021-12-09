@@ -119,7 +119,7 @@ const Information: FC<Props> = ({ profile }) => {
           {SNSArr.map((sns, index) => (
             <button
               key={index}
-              className={!profile[sns.type] && "none"}
+              className={!profile[sns.type] ? "none" : undefined}
               onClick={() => window.open(profile[sns.type])}
             >
               {sns.component}

@@ -7,6 +7,8 @@ import { Profile } from "./../../../../lib/interface/profile";
 import { AxiosError } from "axios";
 import { toast } from "material-react-toastify";
 import { setContextValue } from "../../../../lib/context";
+import FileInput from "../../FileInput";
+import { getFileData } from "./../../../../lib/utils/getFileData";
 
 const UpdateProfile: FC = () => {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -49,11 +51,28 @@ const UpdateProfile: FC = () => {
       });
   };
 
+  const updateProfileCover = (event) => {
+    getFileData(event).then((res) => {
+      toast.info("🙌 사진을 변경중입니다...");
+      profile.updateProfileCover(res.file).then((res) => {
+        toast.success("😊 사진이 변경되었습니다!");
+        toast.success("👉 새로고침 후 변경됩니다!");
+        setProfileData({
+          ...profileData,
+          profile: res.data.image_path,
+        });
+      });
+    });
+  };
+
   return (
     <Wrapper>
+      <FileInput id="profile-cover" onChange={updateProfileCover} type="img" />
       {profileData && (
         <FlexWrap>
-          <img src={profileData.profile} />
+          <label htmlFor="profile-cover">
+            <img src={profileData.profile} />
+          </label>
           <InputContainer>
             <input
               placeholder="이름을 입력하세요"
