@@ -25,12 +25,11 @@ export const CoverImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f6bb19;
   position: relative;
   & img {
     width: 160px;
     height: 160px;
-    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.3);
     border-radius: 0px;
   }
 `;

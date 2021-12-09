@@ -20,6 +20,7 @@ const Main: FC<Props> = () => {
       setPopularPlaylist(res.data.playlist);
     });
   }, []);
+  console.log(popularPlaylist);
   return (
     <S.Wrapper>
       <ChartTab />

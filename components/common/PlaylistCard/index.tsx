@@ -12,7 +12,7 @@ interface Props {
 const PlaylistCard: FC<Props> = ({ playlist }) => {
   return (
     <S.Wrapper>
-      <S.CoverImageWrapper>
+      <S.CoverImageWrapper style={{ background: `#${playlist.color_hex}` }}>
         <LoadImage src={playlist.cover_url} border_radius="basic" />
         <PlayButton />
       </S.CoverImageWrapper>
