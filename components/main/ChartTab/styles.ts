@@ -4,7 +4,7 @@ import { ColorMap } from "../../../styles/color";
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 export const Container = styled.div`

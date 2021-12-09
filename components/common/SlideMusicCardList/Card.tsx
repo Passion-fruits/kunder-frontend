@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import { ColorMap } from "../../../styles/color";
 import { Music } from "../../../lib/interface/music";
 import LoadImage from "../LoadImage";
+import { setContextValue } from "../../../lib/context";
 
 interface Props {
   currentShow: boolean;
@@ -13,6 +14,13 @@ interface Props {
 }
 
 const Card: FC<Props> = ({ currentShow, setCurrentIndex, index, music }) => {
+  const dispatch = setContextValue();
+  const playMusic = () => {
+    dispatch({
+      type: "SET_MUSIC",
+      music: music,
+    });
+  };
   return (
     <CardWrap
       currentShow={currentShow}
@@ -20,7 +28,7 @@ const Card: FC<Props> = ({ currentShow, setCurrentIndex, index, music }) => {
       style={currentShow ? {} : { cursor: "pointer" }}
     >
       <CoverWrap currentShow={currentShow}>
-        <button>
+        <button onClick={playMusic}>
           <PlayIcon size={23} />
         </button>
         <LoadImage src={music.cover_url} border_radius="basic" />
