@@ -22,14 +22,20 @@ export const Wrapper = styled.div`
 export const CoverImageWrapper = styled.div`
   width: 200px;
   height: 200px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   & img {
-    width: 160px;
-    height: 160px;
-    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.3);
+    width: 140px;
+    height: 140px;
     border-radius: 0px;
+  }
+  & .color-line {
+    opacity: 0.7;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
   }
 `;

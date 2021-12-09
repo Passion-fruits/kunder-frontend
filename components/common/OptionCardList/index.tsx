@@ -8,7 +8,7 @@ import { Music } from "./../../../lib/interface/music";
 import { Playlist } from "./../../../lib/interface/playlist";
 
 interface Props {
-  data?: Music[] | Playlist[] | any[];
+  data: Music[] | Playlist[];
   option:
     | "musicCardToMain"
     | "musicCardToChart"
@@ -17,7 +17,7 @@ interface Props {
     | "playlistCard";
 }
 
-const CardList: FC<Props> = ({ data = [1, 2, 3, 4, 5, 6], option }: Props) => {
+const CardList: FC<Props> = ({ data = [], option }: Props) => {
   return (
     <>
       {option === "musicCardToMain" && (
