@@ -31,6 +31,13 @@ const Information: FC<Props> = ({ profile }) => {
     });
   };
 
+  const updateProfile = () => {
+    dispatch({
+      type: "SET_MODAL",
+      modal: "updateProfile",
+    });
+  };
+
   const SNSArr = [
     {
       type: "facebook",
@@ -86,7 +93,7 @@ const Information: FC<Props> = ({ profile }) => {
           <h1 className="nickname">{profile.name}</h1>
           <div className="button-wrap">
             {isMine ? (
-              <button>정보수정</button>
+              <button onClick={updateProfile}>정보수정</button>
             ) : (
               <button onClick={requestFollow}>
                 {isFollow ? "언팔로우" : "팔로우"}

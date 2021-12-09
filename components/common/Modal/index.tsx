@@ -5,6 +5,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Support from "./Support";
 import Playlist from "./Playlist";
+import UpdateProfile from "./UpdateProfile";
 
 interface Props {}
 
@@ -34,6 +35,8 @@ const Modal: FC<Props> = () => {
             return <Support />;
           case "playlist":
             return <Playlist />;
+          case "updateProfile":
+            return <UpdateProfile />;
         }
       })()}
     </S.Wrapper>

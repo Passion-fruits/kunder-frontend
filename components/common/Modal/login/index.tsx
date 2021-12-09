@@ -10,7 +10,7 @@ import {
   ACCESS_TOKEN,
   REFRESH_TOKEN,
   USER_ID,
-} from "./../../../../lib/api/export";
+} from "../../../../lib/api/export";
 
 interface Props {}
 
