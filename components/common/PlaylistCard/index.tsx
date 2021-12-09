@@ -12,13 +12,26 @@ interface Props {
 const PlaylistCard: FC<Props> = ({ playlist }) => {
   return (
     <S.Wrapper>
-      <S.CoverImageWrapper>
-        <LoadImage src={playlist.cover_url} border_radius="basic" />
-        <PlayButton />
-      </S.CoverImageWrapper>
-      <Link href={`/playlist/${playlist.playlist_id}`}>
-        <h1 className="title text-overflow">{playlist.name}</h1>
-      </Link>
+      {playlist && (
+        <>
+          <S.CoverImageWrapper>
+            <div
+              className="color-line"
+              style={{ border: `30px solid #${playlist.color_hex}` }}
+            />
+            <LoadImage src={playlist.cover_url} border_radius="basic" />
+            <PlayButton />
+          </S.CoverImageWrapper>
+          <Link href={`/playlist/${playlist.playlist_id}`}>
+            <h1 className="title text-overflow">{playlist.name}</h1>
+          </Link>
+          <div className="author text-overflow">
+            플레이리스트
+            <div className="circle" />
+            {playlist.author}
+          </div>
+        </>
+      )}
     </S.Wrapper>
   );
 };

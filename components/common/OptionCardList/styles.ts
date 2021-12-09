@@ -9,9 +9,9 @@ export const RowWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const ColumnWrapper = styled.div`
+export const ColumnWrapper = styled.div<{ gap }>`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: ${(res) => `${res.gap}px`};
 `;

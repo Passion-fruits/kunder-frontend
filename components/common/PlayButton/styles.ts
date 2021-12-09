@@ -11,6 +11,7 @@ export const Button = styled.button`
   bottom: 0;
   margin: 10px;
   transition: 0.3s;
+  z-index: 2;
   & svg {
     margin-left: 4px;
     margin-top: 2px;

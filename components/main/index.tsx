@@ -31,14 +31,6 @@ const Main: FC<Props> = () => {
         <h1 className="list-title">지금 뜨는 플레이리스트</h1>
         <CardList option="playlistCard" data={popularPlaylist} />
       </S.CardListWrap>
-      <S.CardListWrap>
-        <h1 className="list-title">이런 음악 어떠신가요?</h1>
-        <CardList option="musicCardToMain" />
-      </S.CardListWrap>
-      <S.CardListWrap>
-        <h1 className="list-title">이런 음악 어떠신가요?</h1>
-        <CardList option="playlistCard" />
-      </S.CardListWrap>
     </S.Wrapper>
   );
 };

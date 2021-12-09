@@ -11,12 +11,12 @@ const Auth: FC<Props> = () => {
   const openLoginModal = () => {
     dispatch({ type: "SET_MODAL", modal: "login" });
   };
-  const [musicList, setMusicList] = useState();
+  const [musicList, setMusicList] = useState([]);
 
   useEffect(() => {
-        music.getStream({ size: 10, page: 1, sort: 1, genre: 3 }).then((res) => {
+    music.getStream({ size: 10, page: 1, sort: 1, genre: 3 }).then((res) => {
       setMusicList(res.data.songs);
-    }); 
+    });
   }, []);
 
   return (

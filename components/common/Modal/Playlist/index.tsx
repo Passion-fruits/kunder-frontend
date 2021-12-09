@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { ColorMap } from "./../../../../styles/color";
 import playlist from "../../../../lib/api/playlist";
@@ -15,6 +15,7 @@ const Playlist: FC<Props> = () => {
   const contextObj = getContextValue();
   const song_id = contextObj.song_id;
   const dispatch = setContextValue();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const getPlaylist = () => {
     playlist
@@ -59,6 +60,13 @@ const Playlist: FC<Props> = () => {
       });
   };
 
+  const showCreateInput = () => {
+    setIsAdd(true);
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 10);
+  };
+
   useEffect(() => {
     getPlaylist();
   }, []);
@@ -75,10 +83,11 @@ const Playlist: FC<Props> = () => {
           type="text"
           placeholder="플레이리스트명을 입력하세요"
           onKeyDown={createPlaylist}
+          ref={inputRef}
         />
       ) : (
         <button
-          onClick={() => setIsAdd(true)}
+          onClick={showCreateInput}
           style={{ color: ColorMap.blue100, borderBottom: "none" }}
         >
           + 플레이리스트 추가
@@ -99,6 +108,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 250px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 3px;
+    background-color: ${ColorMap.grey800};
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${ColorMap.blue100};
+  }
   &,
   div,
   input {

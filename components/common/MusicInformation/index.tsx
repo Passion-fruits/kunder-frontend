@@ -8,6 +8,7 @@ import LoadImage from "../LoadImage";
 interface Props {
   type: "playlist" | "chart" | "audioPlayer";
   music: MusicInformation;
+  index?: number;
 }
 
 const MusicInformation: FC<Props> = ({
@@ -18,11 +19,12 @@ const MusicInformation: FC<Props> = ({
     title: "Lose Yourself by Eminem | Eminem",
     artist: "블랙넛",
   },
+  index,
 }) => {
   return (
     <S.MusicInformation>
       {type === "playlist" ? (
-        <span className="index-num">1</span>
+        <span className="index-num">{index + 1}</span>
       ) : type === "chart" ? (
         <div className="chart-rank-index">
           <span>1</span>

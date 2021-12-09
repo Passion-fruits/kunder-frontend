@@ -8,7 +8,7 @@ import { Music } from "./../../../lib/interface/music";
 import { Playlist } from "./../../../lib/interface/playlist";
 
 interface Props {
-  data?: Music[] | Playlist[] | any[];
+  data: Music[] | Playlist[];
   option:
     | "musicCardToMain"
     | "musicCardToChart"
@@ -17,7 +17,7 @@ interface Props {
     | "playlistCard";
 }
 
-const CardList: FC<Props> = ({ data = [1, 2, 3, 4, 5, 6], option }: Props) => {
+const CardList: FC<Props> = ({ data = [], option }: Props) => {
   return (
     <>
       {option === "musicCardToMain" && (
@@ -35,14 +35,14 @@ const CardList: FC<Props> = ({ data = [1, 2, 3, 4, 5, 6], option }: Props) => {
         </S.RowWrapper>
       )}
       {option === "musicCardToPlaylist" && (
-        <S.ColumnWrapper>
+        <S.ColumnWrapper gap={25}>
           {data.map((obj, index) => (
-            <MusicCardToPlaylist key={index} music={obj} />
+            <MusicCardToPlaylist key={index} music={obj} index={index} />
           ))}
         </S.ColumnWrapper>
       )}
       {option === "musicCardToChart" && (
-        <S.ColumnWrapper>
+        <S.ColumnWrapper gap={35}>
           {[1, 2, 3, 4, 5].map((e, index) => (
             <MusicCardToChart key={index} />
           ))}

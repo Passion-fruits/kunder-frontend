@@ -37,12 +37,18 @@ export const CoverImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3e67ad;
+  position: relative;
   & img {
-    width: 420px;
-    height: 420px;
-    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
     border-radius: 0px;
+  }
+  & .line {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    opacity: 0.8;
   }
 `;
 
