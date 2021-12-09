@@ -46,10 +46,14 @@ export const CoverWrap = styled.div`
   width: 45px;
   height: 45px;
   cursor: pointer;
-  & img {
+  & img,
+  .none-cover {
     width: 100%;
     height: 100%;
     border-radius: 3px;
+  }
+  & .none-cover {
+    background-color: ${ColorMap.grey600};
   }
   & .play-cover {
     opacity: 0;

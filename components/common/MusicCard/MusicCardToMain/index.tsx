@@ -19,7 +19,7 @@ const MusicCardToMain: FC<Props> = ({ music }) => {
             <PlayIcon size={7} />
             123
           </div>
-          <PlayButton />
+          <PlayButton type="music" music={music} />
         </S.MusicInformation>
         <LoadImage src={music.cover_url} border_radius="basic" />
       </S.MusicCoverWrap>

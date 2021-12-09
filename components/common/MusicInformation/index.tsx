@@ -37,16 +37,27 @@ const MusicInformation: FC<Props> = ({
         <button className="play-cover">
           <PlayIcon size={18} />
         </button>
-        <LoadImage src={music.cover_url} border_radius="basic" />
+        {music ? (
+          <LoadImage src={music.cover_url} border_radius="basic" />
+        ) : (
+          <div className="none-cover" />
+        )}
       </S.CoverWrap>
-      <div className="title-artist-wrap">
-        <Link href="/music/15">
-          <h1 className="text-overflow">{music.title}</h1>
-        </Link>
-        <Link href="/profile/3">
-          <h3>{music.artist}</h3>
-        </Link>
-      </div>
+      {music ? (
+        <div className="title-artist-wrap">
+          <Link href="/music/15">
+            <h1 className="text-overflow">{music.title}</h1>
+          </Link>
+          <Link href="/profile/3">
+            <h3>{music.artist}</h3>
+          </Link>
+        </div>
+      ) : (
+        <div className="title-artist-wrap">
+          <h1 className="text-overflow">곡이 없습니다</h1>
+          <h3>- - -</h3>
+        </div>
+      )}
     </S.MusicInformation>
   );
 };
