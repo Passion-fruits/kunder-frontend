@@ -32,12 +32,10 @@ const AudioPlayer: FC<Props> = () => {
   };
 
   const setProgress = () => {
-    setInterval(() => {
-      const progress = (audio.currentTime / audio.duration) * 100;
-      if (!isNaN(progress)) {
-        setMusicProgress(progress);
-      }
-    }, 1000);
+    const progress = (audio.currentTime / audio.duration) * 100;
+    if (!isNaN(progress)) {
+      setMusicProgress(progress);
+    }
   };
 
   const controlMusicProgress = useCallback(() => {
