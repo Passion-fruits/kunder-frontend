@@ -2,14 +2,19 @@ import { FC } from "react";
 import * as S from "./styles";
 import Information from "./Information/index";
 import MenuTab from "./MenuTab";
+import { Profile } from "./../../lib/interface/profile";
+import { useRouter } from "next/dist/client/router";
 
-interface Props {}
+interface Props {
+  profile: Profile;
+}
 
-const Profile: FC<Props> = () => {
+const Profile: FC<Props> = ({ profile }) => {
+  const router = useRouter();
   return (
     <S.Wrapper>
-      <Information />
-      <MenuTab />
+      <Information profile={profile} />
+      <MenuTab user_id={router.query.id}   />
     </S.Wrapper>
   );
 };

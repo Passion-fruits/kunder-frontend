@@ -2,23 +2,70 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import { ColorMap } from "../../../../styles/color";
 import { setContextValue } from "../../../../lib/context/index";
+import GoogleLogin from "react-google-login";
+import { toast } from "material-react-toastify";
+import auth from "../../../../lib/api/auth";
+import { useRouter } from "next/dist/client/router";
+import {
+  ACCESS_TOKEN,
+  REFRESH_TOKEN,
+  USER_ID,
+} from "../../../../lib/api/export";
 
 interface Props {}
 
 const Login: FC<Props> = () => {
   const dispatch = setContextValue();
+  const router = useRouter();
+
   const changeModalToSignup = () => {
     dispatch({
       type: "SET_MODAL",
       modal: "signUp",
     });
   };
+
+  const googleAuthEvent = (event) => {
+    const token = event.tokenId;
+    toast.info("😊 정상 처리중입니다.");
+    auth.googleLogin(token).then((res) => {
+      const data = res.data;
+      if (!data.isFresh) {
+        localStorage.setItem(ACCESS_TOKEN, data.access_token);
+        localStorage.setItem(REFRESH_TOKEN, data.refresh_token);
+        localStorage.setItem(USER_ID, data.user_id);
+        toast.success("🖐 로그인을 환영합니다!");
+        dispatch({
+          type: "SET_MODAL",
+          modal: "none",
+        });
+        router.push("/");
+        return;
+      } else {
+        dispatch({
+          type: "SET_MODAL",
+          modal: "signUp",
+        });
+      }
+    });
+  };
+
   return (
     <Wrapper>
       <h1>로그인/가입</h1>
       <p>쿤더에 오신 것을 환영합니다!</p>
       <ButtonWrap>
-        <button className="google">Google 로그인</button>
+        <GoogleLogin
+          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}
+          cookiePolicy="single_host_origin"
+          render={(res) => (
+            <button onClick={res.onClick} className="google">
+              Google 로그인
+            </button>
+          )}
+          onSuccess={googleAuthEvent}
+          onFailure={() => toast.error("😢 정보를 불러오는데 실패하였습니다.")}
+        />
         <button className="facebook">Facebook 로그인</button>
         <button className="kakao">Kakao 로그인</button>
       </ButtonWrap>

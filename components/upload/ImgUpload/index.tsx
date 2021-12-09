@@ -1,14 +1,29 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styled from "@emotion/styled";
 import { ColorMap } from "./../../../styles/color";
+import FileInput from "../../common/FileInput";
+import { getFileData } from "./../../../lib/utils/getFileData";
 
-interface Props {}
+interface Props {
+  setCoverImg(any): void;
+}
 
-const ImgUpload: FC<Props> = () => {
+const ImgUpload: FC<Props> = ({ setCoverImg }) => {
+  const [preview, setPreview] = useState("");
+
+  const upload = (event) => {
+    getFileData(event).then((res) => {
+      setPreview(res.preview);
+      setCoverImg(res.file);
+    });
+  };
   return (
     <Wrapper>
-      <div className="none" />
-      <button>이미지 업로드</button>
+      <FileInput type="img" id="cover_img" onChange={upload} />
+      {preview ? <img src={preview} /> : <div className="none" />}
+      <label htmlFor="cover_img">
+        <div>이미지 업로드</div>
+      </label>
     </Wrapper>
   );
 };
@@ -25,7 +40,7 @@ const Wrapper = styled.div`
   & .none {
     background: linear-gradient(45deg, #9a87ff, #00ff90);
   }
-  & button {
+  & label div {
     background-color: ${ColorMap.mainColor};
     color: ${ColorMap.grey000};
     width: 100%;
@@ -33,5 +48,9 @@ const Wrapper = styled.div`
     font-size: 15px;
     border-radius: 3px;
     margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
   }
 `;

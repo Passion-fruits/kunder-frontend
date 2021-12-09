@@ -1,8 +1,14 @@
 interface Props {
   size: number;
+  full?: boolean;
+  color?: "#fff" | "#000";
 }
 
-export default function HeartIcon({ size }: Props) {
+export default function HeartIcon({
+  size,
+  full = false,
+  color = "#fff",
+}: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,8 +21,8 @@ export default function HeartIcon({ size }: Props) {
         data-name="Icon feather-heart"
         d="M18.341,5.827a4.587,4.587,0,0,0-6.46,0L11,6.7l-.88-.875a4.589,4.589,0,0,0-6.46,0,4.518,4.518,0,0,0,0,6.419l.88.875L11,19.539l6.46-6.419.88-.875a4.517,4.517,0,0,0,0-6.419Z"
         transform="translate(-1.573 -3.747)"
-        fill="none"
-        stroke="#fff"
+        fill={full ? color : "none"}
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"

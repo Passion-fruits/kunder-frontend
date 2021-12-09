@@ -148,7 +148,6 @@ export const WriteComment = styled.input`
   width: 100%;
   height: 60px;
   margin-top: 25px;
-  margin-bottom: 50px;
   background-color: ${ColorMap.grey800};
   border-radius: 5px;
   padding: 0 20px;
@@ -156,5 +155,44 @@ export const WriteComment = styled.input`
   color: ${ColorMap.grey100};
   &::placeholder {
     color: ${ColorMap.grey300};
+  }
+`;
+
+export const CommentWrap = styled.div`
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  & .comment-cnt {
+    color: ${ColorMap.grey200};
+    font-size: 18px;
+  }
+`;
+
+export const Comment = styled.div`
+  display: flex;
+  margin-top: 25px;
+  & img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  & div {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    & span {
+      font-size: 15px;
+      color: ${ColorMap.grey100};
+      & time {
+        color: ${ColorMap.grey300};
+        margin-left: 5px;
+      }
+    }
+    & p {
+      color: ${ColorMap.grey000};
+      font-size: 18px;
+      margin-top: 5px;
+    }
   }
 `;

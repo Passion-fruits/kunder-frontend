@@ -2,13 +2,16 @@ import { FC } from "react";
 import { AddPlaylistIcon, PlayIcon, HeartIcon } from "../../../../assets";
 import MusicInformation from "../../MusicInformation";
 import * as S from "./styles";
+import { Music } from "./../../../../lib/interface/music";
 
-interface Props {}
+interface Props {
+  music: Music;
+}
 
-const MusicCardToPlaylist: FC<Props> = () => {
+const MusicCardToPlaylist: FC<Props> = ({ music }) => {
   return (
     <S.Wrapper>
-      <MusicInformation type="playlist" />
+      <MusicInformation type="playlist" music={music} />
       <S.ControlBtnWrap>
         <button>
           <PlayIcon size={18} />

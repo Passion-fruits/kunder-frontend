@@ -1,7 +1,8 @@
-import { FC } from "react";
-import ShowMusic from "./ShowMusic";
+import { FC, useEffect, useState } from "react";
 import * as S from "./styles";
 import { setContextValue } from "./../../lib/context/index";
+import SlideCardList from "../common/SlideMusicCardList";
+import music from "../../lib/api/music";
 
 interface Props {}
 
@@ -10,6 +11,14 @@ const Auth: FC<Props> = () => {
   const openLoginModal = () => {
     dispatch({ type: "SET_MODAL", modal: "login" });
   };
+  const [musicList, setMusicList] = useState();
+
+  useEffect(() => {
+        music.getStream({ size: 10, page: 1, sort: 1, genre: 3 }).then((res) => {
+      setMusicList(res.data.songs);
+    }); 
+  }, []);
+
   return (
     <S.Wrapper>
       <div className="line" />
@@ -22,7 +31,7 @@ const Auth: FC<Props> = () => {
         <button onClick={openLoginModal}>로그인/가입</button>
         <button>서비스 소개</button>
       </S.ButtonWrap>
-      <ShowMusic />
+      <SlideCardList data={musicList} />
     </S.Wrapper>
   );
 };

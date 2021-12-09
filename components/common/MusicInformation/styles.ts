@@ -29,6 +29,7 @@ export const MusicInformation = styled.div`
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
+      width: 300px;
     }
     & h3 {
       font-size: 13px;

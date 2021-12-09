@@ -3,10 +3,14 @@ import { PlayIcon } from "../../../../assets";
 import PlayButton from "../../PlayButton";
 import * as S from "./styles";
 import Link from "next/link";
+import { Music } from "./../../../../lib/interface/music";
+import LoadImage from "../../LoadImage";
 
-interface Props {}
+interface Props {
+  music: Music;
+}
 
-const MusicCardToMain: FC<Props> = () => {
+const MusicCardToMain: FC<Props> = ({ music }) => {
   return (
     <S.Wrapper>
       <S.MusicCoverWrap>
@@ -17,13 +21,13 @@ const MusicCardToMain: FC<Props> = () => {
           </div>
           <PlayButton />
         </S.MusicInformation>
-        <img src="https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/bebllwzjpsujz9ffwp6s/tyler-the-creator-scum-fuck-flower-boy-cover?fimg-ssr-default" />
+        <LoadImage src={music.cover_url} border_radius="basic" />
       </S.MusicCoverWrap>
-      <Link href="/music/1">
-        <h1 className="title text-overflow">True story</h1>
+      <Link href={`/music/${music.song_id}`}>
+        <h1 className="title text-overflow">{music.title}</h1>
       </Link>
-      <Link href="/profile/1">
-        <h3 className="artist text-overflow">이센스</h3>
+      <Link href="/profile/3">
+        <h3 className="artist text-overflow">{music.artist}</h3>
       </Link>
     </S.Wrapper>
   );

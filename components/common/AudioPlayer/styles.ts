@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   width: 1400px;
-  height: 110px;
+  height: 90px;
   display: flex;
   align-items: center;
   position: relative;

@@ -13,7 +13,7 @@ export default function AlertIcon({ size }) {
           transform="translate(775 347)"
           fill="none"
           stroke="#fff"
-          stroke-width="2"
+          strokeWidth="2"
         >
           <circle cx="14" cy="14" r="14" stroke="none" />
           <circle cx="14" cy="14" r="13" fill="none" />

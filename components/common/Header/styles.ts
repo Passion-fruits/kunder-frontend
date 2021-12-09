@@ -24,12 +24,47 @@ export const Container = styled.div`
     z-index: 2;
     cursor: pointer;
   }
-  & .profile {
+`;
+
+export const ProfileWrap = styled.div`
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  & img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 2;
+  }
+`;
+
+export const ProfileMenu = styled.div`
+  width: 170px;
+  background-color: ${ColorMap.grey800};
+  position: absolute;
+  margin-top: 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  & div {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    color: ${ColorMap.grey000};
+    font-size: 18px;
+    border-bottom: 1px solid ${ColorMap.grey700};
+    &:last-of-type {
+      color: ${ColorMap.red100};
+      font-weight: 500;
+      border: none;
+    }
+    &:hover {
+      background-color: ${ColorMap.grey900};
+    }
   }
 `;
 
