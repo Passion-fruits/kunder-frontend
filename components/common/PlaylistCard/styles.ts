@@ -9,12 +9,26 @@ export const Wrapper = styled.div`
     color: ${ColorMap.grey000};
     font-size: 16px;
     font-weight: 500;
-    text-align: center;
     margin-top: 10px;
+    margin-bottom: 3px;
     cursor: pointer;
     transition: 0.3s;
     &:hover {
       opacity: 0.8;
+    }
+  }
+  & .author {
+    color: ${ColorMap.grey300};
+    font-size: 14px;
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+    & .circle {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: ${ColorMap.grey300};
     }
   }
 `;
@@ -27,15 +41,16 @@ export const CoverImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   & img {
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 200px;
     border-radius: 0px;
   }
   & .color-line {
-    opacity: 0.7;
+    opacity: 0.9;
     position: absolute;
     z-index: 1;
     width: 100%;
     height: 100%;
+    background: none;
   }
 `;

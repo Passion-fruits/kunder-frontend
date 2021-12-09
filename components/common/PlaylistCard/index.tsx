@@ -4,6 +4,7 @@ import * as S from "./styles";
 import Link from "next/link";
 import { Playlist } from "./../../../lib/interface/playlist";
 import LoadImage from "../LoadImage";
+import { getDate } from "./../../../lib/utils/getDate";
 
 interface Props {
   playlist: Playlist;
@@ -25,6 +26,11 @@ const PlaylistCard: FC<Props> = ({ playlist }) => {
           <Link href={`/playlist/${playlist.playlist_id}`}>
             <h1 className="title text-overflow">{playlist.name}</h1>
           </Link>
+          <div className="author text-overflow">
+            플레이리스트
+            <div className="circle" />
+            {playlist.author}
+          </div>
         </>
       )}
     </S.Wrapper>
