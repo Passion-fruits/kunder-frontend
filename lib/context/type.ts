@@ -15,8 +15,8 @@ export type ModalOption =
 
 export type State = {
   modal?: ModalOption;
-  song_id?: string | string[];
-  music: Music;
+  song_id?: string | string[] | number;
+  music?: Music;
 };
 
 export type Action = State & {
