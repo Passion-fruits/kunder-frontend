@@ -39,11 +39,17 @@ export const ShaddowWrapper = styled.div`
   }
 `;
 
-export const CardListWrapper = styled.div`
-  width: 100%;
+export const FlexWrap = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: 70px;
+`;
+
+export const CardListWrapper = styled.div<{ index }>`
+  width: 100%;
+  display: flex;
   gap: 80px;
+  width: 420px;
+  transform: ${({ index }) => `translateX(-${300 * index + 80 * index}px)`};
+  transition: 0.5s;
 `;

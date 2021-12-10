@@ -5,22 +5,6 @@ import { ColorMap } from "../../../styles/color";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  opacity: 0.6;
-  & .top {
-    width: 300px;
-  }
-  & .tag {
-    display: none;
-  }
-  &:nth-of-type(3) {
-    opacity: 1;
-    & .top {
-      width: 420px;
-    }
-    & .tag {
-      display: flex;
-    }
-  }
   & .card-title {
     color: ${ColorMap.grey000};
     font-size: 25px;
@@ -34,21 +18,12 @@ export const Card = styled.div`
   }
 `;
 
-const CardExpandAnime = keyframes`
-0%{
-  width:300px;
-}
-100%{
-  width:430px;
-}
-`;
-
 export const CardTop = styled.div`
   display: flex;
   align-items: center;
   width: 430px;
   position: relative;
-  animation: ${CardExpandAnime} 1000ms;
+  transition: 500ms;
   & .lit-cover-img {
     width: 300px;
     height: 300px;
@@ -105,6 +80,7 @@ export const TagWrap = styled.div`
   margin-top: 30px;
   display: flex;
   gap: 10px;
+  transition: 500ms;
   & div {
     padding: 10px 15px;
     background-color: ${ColorMap.grey900};
