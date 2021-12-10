@@ -8,3 +8,4 @@ export { default as FacebookIcon } from "./Facebook";
 export { default as SoundCloudIcon } from "./SoundCloud";
 export { default as InstargramIcon } from "./Instargram";
 export { default as YoutubeIcon } from "./Youtube";
+export { default as CommentIcon } from "./Comment";
