@@ -2,14 +2,17 @@ import { FC } from "react";
 import * as S from "./styles";
 import { CommentIcon, HeartIcon } from "../../../assets";
 import LoadImage from "./../../common/LoadImage/index";
+import { Music } from "../../../lib/interface/music";
+import { getDate } from "./../../../lib/utils/getDate";
 
 interface Props {
   index: number;
   currentIndex: number;
   setCurrentIndex(any): void;
+  music: Music;
 }
 
-const Card: FC<Props> = ({ index, currentIndex, setCurrentIndex }) => {
+const Card: FC<Props> = ({ index, currentIndex, setCurrentIndex, music }) => {
   const isMine = index === currentIndex;
   return (
     <S.Card
@@ -19,32 +22,29 @@ const Card: FC<Props> = ({ index, currentIndex, setCurrentIndex }) => {
       <S.CardTop style={isMine ? { width: "420px" } : { width: "300px" }}>
         <LoadImage
           border_radius="basic"
-          src="https://i.pinimg.com/originals/10/6c/8e/106c8e4a30c0b84aa3c5296db8b0a4d0.jpg"
+          src={music.cover_url}
           className="lit-cover-img"
         />
         <S.LPWrapper>
-          <LoadImage
-            border_radius="circle"
-            src="https://i.pinimg.com/originals/10/6c/8e/106c8e4a30c0b84aa3c5296db8b0a4d0.jpg"
-          />
+          <LoadImage border_radius="circle" src={music.cover_url} />
         </S.LPWrapper>
       </S.CardTop>
-      <h1 className="card-title">Still Dre</h1>
-      <h3 className="card-artist">dr dre</h3>
+      <h1 className="card-title">{music.title}</h1>
+      <h3 className="card-artist">{music.artist}</h3>
       <S.ButtonWrap>
         <button>
           <CommentIcon size={20} />
-          10
+          {music.comment}
         </button>
         <button>
           <HeartIcon size={20} color="#fff" />
-          10
+          {music.like}
         </button>
       </S.ButtonWrap>
       <S.TagWrap style={isMine ? { opacity: 1 } : { opacity: 0 }}>
-        <div># 힙합음악</div>
-        <div># 힙합음악</div>
-        <div># 힙합음악</div>
+        <div># {getDate(music.created_at)}</div>
+        <div># {music.genre}음악</div>
+        <div># 아침에</div>
       </S.TagWrap>
     </S.Card>
   );
