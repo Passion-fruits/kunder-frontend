@@ -1,4 +1,3 @@
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ColorMap } from "../../styles/color";
 
@@ -44,5 +43,7 @@ export const CardListWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 70px;
+  gap: 80px;
 `;

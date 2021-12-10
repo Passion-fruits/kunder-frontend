@@ -5,6 +5,22 @@ import { ColorMap } from "../../../styles/color";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
+  opacity: 0.6;
+  & .top {
+    width: 300px;
+  }
+  & .tag {
+    display: none;
+  }
+  &:nth-of-type(3) {
+    opacity: 1;
+    & .top {
+      width: 420px;
+    }
+    & .tag {
+      display: flex;
+    }
+  }
   & .card-title {
     color: ${ColorMap.grey000};
     font-size: 25px;
@@ -79,6 +95,9 @@ export const ButtonWrap = styled.div`
     align-items: center;
     color: ${ColorMap.grey000};
     font-size: 16px;
+    & svg {
+      transform: translateY(2px);
+    }
   }
 `;
 

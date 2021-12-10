@@ -8,7 +8,7 @@ interface Props {}
 const Card: FC<Props> = () => {
   return (
     <S.Card>
-      <S.CardTop>
+      <S.CardTop className="top">
         <LoadImage
           border_radius="basic"
           src="https://i.pinimg.com/originals/10/6c/8e/106c8e4a30c0b84aa3c5296db8b0a4d0.jpg"
@@ -33,7 +33,7 @@ const Card: FC<Props> = () => {
           10
         </button>
       </S.ButtonWrap>
-      <S.TagWrap>
+      <S.TagWrap className="tag">
         <div># 힙합음악</div>
         <div># 힙합음악</div>
         <div># 힙합음악</div>

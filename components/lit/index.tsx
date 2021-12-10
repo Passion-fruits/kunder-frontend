@@ -16,6 +16,10 @@ const Lit: FC<Props> = () => {
       <PageDiscription />
       <S.CardListWrapper>
         <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </S.CardListWrapper>
     </S.Wrapper>
   );
