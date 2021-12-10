@@ -23,6 +23,12 @@ textarea {
   border: none;
   outline: none;
   background: none;
+  resize: none;
+}
+
+select,
+button {
+  cursor: pointer;
 }
 
 h1,
@@ -34,4 +40,21 @@ h6,
 p {
   margin: 0;
   padding: 0;
+}
+
+img {
+  object-fit: cover;
+}
+
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+li,
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }

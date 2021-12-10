@@ -8,6 +8,7 @@ export const ColorMap = {
   grey600: "#4b4b4b",
   grey700: "#2e2e2e",
   grey800: "#191919",
+  grey900: "#2e2e2e",
 
   mainColor: "#ff4600",
 
