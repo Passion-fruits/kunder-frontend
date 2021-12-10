@@ -3,7 +3,6 @@ import { ColorMap } from "../../styles/color";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
   position: relative;
 `;
 
@@ -27,7 +26,7 @@ export const PageDescription = styled.div`
 
 export const ShaddowWrapper = styled.div`
   width: 100%;
-  height: 800px;
+  height: 100%;
   position: absolute;
   z-index: -1;
   display: flex;
