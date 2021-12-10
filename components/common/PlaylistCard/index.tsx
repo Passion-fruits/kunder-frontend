@@ -15,12 +15,14 @@ const PlaylistCard: FC<Props> = ({ playlist }) => {
       {playlist && (
         <>
           <S.CoverImageWrapper>
-            <div
-              className="color-line"
-              style={{ border: `30px solid #${playlist.color_hex}` }}
-            />
+            <Link href={`/playlist/${playlist.playlist_id}`}>
+              <div
+                className="color-line"
+                style={{ border: `30px solid #${playlist.color_hex}` }}
+              />
+            </Link>
             <LoadImage src={playlist.cover_url} border_radius="basic" />
-            <PlayButton />
+            <PlayButton type="playlist" />
           </S.CoverImageWrapper>
           <Link href={`/playlist/${playlist.playlist_id}`}>
             <h1 className="title text-overflow">{playlist.name}</h1>

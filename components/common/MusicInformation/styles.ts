@@ -30,6 +30,9 @@ export const MusicInformation = styled.div`
       font-weight: 500;
       cursor: pointer;
       width: 300px;
+      &:hover {
+        color: ${ColorMap.mainColor};
+      }
     }
     & h3 {
       font-size: 13px;
@@ -37,6 +40,9 @@ export const MusicInformation = styled.div`
       color: ${ColorMap.grey200};
       margin-top: 2px;
       cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 `;
@@ -46,10 +52,14 @@ export const CoverWrap = styled.div`
   width: 45px;
   height: 45px;
   cursor: pointer;
-  & img {
+  & img,
+  .none-cover {
     width: 100%;
     height: 100%;
     border-radius: 3px;
+  }
+  & .none-cover {
+    background-color: ${ColorMap.grey600};
   }
   & .play-cover {
     opacity: 0;

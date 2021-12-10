@@ -1,25 +1,32 @@
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { PlayIcon } from "../../../../assets";
 import PlayButton from "../../PlayButton";
 import * as S from "./styles";
 import Link from "next/link";
 import { Music } from "./../../../../lib/interface/music";
 import LoadImage from "../../LoadImage";
+import { useRouter } from "next/dist/client/router";
 
 interface Props {
   music: Music;
 }
 
 const MusicCardToMain: FC<Props> = ({ music }) => {
+  const router = useRouter();
+
+  const routingToMusicDetail = () => {
+    router.push(`/music/${music.song_id}`);
+  };
+
   return (
     <S.Wrapper>
       <S.MusicCoverWrap>
-        <S.MusicInformation>
+        <S.MusicInformation onClick={routingToMusicDetail} id="music-infor">
           <div className="show-cnt">
             <PlayIcon size={7} />
             123
           </div>
-          <PlayButton />
+          <PlayButton type="music" music={music} />
         </S.MusicInformation>
         <LoadImage src={music.cover_url} border_radius="basic" />
       </S.MusicCoverWrap>

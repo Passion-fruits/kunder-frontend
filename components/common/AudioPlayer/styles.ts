@@ -30,6 +30,9 @@ export const ControlButtonWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 50px;
+  & .center {
+    width: 30px;
+  }
 `;
 
 interface rangeProps {

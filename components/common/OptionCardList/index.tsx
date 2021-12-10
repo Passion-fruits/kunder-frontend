@@ -17,7 +17,7 @@ interface Props {
     | "playlistCard";
 }
 
-const CardList: FC<Props> = ({ data = [], option }: Props) => {
+const CardList: FC<Props> = ({ data, option }: Props) => {
   return (
     <>
       {option === "musicCardToMain" && (

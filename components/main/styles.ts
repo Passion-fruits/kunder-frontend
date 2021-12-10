@@ -11,7 +11,7 @@ export const CardListWrap = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 60px;
   & .list-title {
     font-size: 25px;
     font-weight: bold;
