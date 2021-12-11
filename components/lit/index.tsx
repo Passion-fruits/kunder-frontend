@@ -16,7 +16,7 @@ const Lit: FC<Props> = () => {
 
   useEffect(() => {
     music.getStream({ size: 10, genre: 3, page: 1, sort: 1 }).then((res) => {
-      /*     setMusicList(res.data.songs); */
+      setMusicList(res.data.songs);
     });
   }, []);
 
