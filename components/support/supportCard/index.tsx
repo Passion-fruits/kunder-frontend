@@ -135,6 +135,8 @@ const SupportCard: FC<Props> = ({ type, data }) => {
             <>
               <Profile
                 isArtist={false}
+                complete={true}
+                answer={obj.question}
                 cover_url={obj.profile}
                 name={obj.name}
                 kdt_cnt={obj.amount}
