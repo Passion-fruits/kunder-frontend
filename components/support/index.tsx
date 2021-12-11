@@ -5,6 +5,7 @@ import LoadingSpinner from "../common/LoadingSpinner";
 import SelectBar from "./selectBar";
 import * as S from "./styles";
 import SupportCard from "./supportCard/index";
+import { toast } from "material-react-toastify";
 
 export type SupportType = "mySupport" | "isSupported";
 
@@ -14,7 +15,7 @@ const Support: FC<Props> = () => {
   const [supportType, setSupportType] = useState<SupportType>("mySupport");
   const [isDone, setIsDone] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [type, setType] = useState<number>(1);
+  const [type, setType] = useState(1);
   /**
    * type
    * 1 : 후원하고 답장 안옴
@@ -23,35 +24,53 @@ const Support: FC<Props> = () => {
    * 4 : 후원받고 답장 함
    */
   const [supportData, setSupportData] = useState<SupportCardType[]>([]);
+  const [page, setPage] = useState(1);
 
-  useEffect(() => {
+  const error = () => {
+    setLoading(false);
+    if (page > 1) {
+      toast.info("👀 데이터가 없습니다");
+    }
+    return;
+  };
+
+  const getData = ({ page, data }) => {
     setLoading(true);
     if (supportType === "mySupport") {
       setType(1 + isDone);
       kdt
-        .getMySupport({ page: 1, size: 10, done: isDone })
+        .getMySupport({ page: page, size: 10, done: isDone })
         .then((res) => {
-          setSupportData(res.data.history);
+          setSupportData(data.concat(res.data.history));
           setLoading(false);
         })
-        .catch((err) => {
-          setLoading(false);
-          return;
-        });
+        .catch(error);
     } else {
       setType(3 + isDone);
       kdt
-        .getIsSupported({ page: 1, size: 10, done: isDone })
+        .getIsSupported({ page: page, size: 10, done: isDone })
         .then((res) => {
           setLoading(false);
-          setSupportData(res.data.history);
+          setSupportData(data.concat(res.data.history));
         })
-        .catch((err) => {
-          setLoading(false);
-          return;
-        });
+        .catch(error);
     }
+  };
+
+  useEffect(() => {
+    if (page === 1) return;
+    getData({ page: page, data: supportData });
+  }, [isDone, page]);
+
+  useEffect(() => {
+    setPage(1);
+    setSupportData([]);
+    getData({ page: 1, data: [] });
   }, [isDone, supportType]);
+
+  const showMore = () => {
+    setPage(page + 1);
+  };
 
   return (
     <S.Wrapper>
@@ -68,6 +87,7 @@ const Support: FC<Props> = () => {
           <LoadingSpinner size={50} />
         </S.LoadingWrap>
       )}
+      <S.MoredButton onClick={showMore}>더 보기</S.MoredButton>
     </S.Wrapper>
   );
 };
