@@ -5,6 +5,7 @@ interface Props {
   src: string;
   size?: number;
   border_radius: "circle" | "basic";
+  className?: string;
 }
 
 const LoadImage: FC<Props> = (params) => {
@@ -23,6 +24,7 @@ const LoadImage: FC<Props> = (params) => {
       src={onLoad ? params.src : "/none_data.png"}
       width={params.size}
       border_radius={params.border_radius}
+      className={params.className}
     />
   );
 };
