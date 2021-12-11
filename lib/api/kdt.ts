@@ -47,4 +47,19 @@ export default {
       },
     });
   },
+  supportToArtist({ user_id, comment, kdt }) {
+    return request({
+      method: "post",
+      url: `/kdt/donate`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      data: {
+        artist_id: parseInt(user_id),
+        amount: Math.floor(parseInt(kdt)),
+        question: comment,
+      },
+    });
+  },
 };

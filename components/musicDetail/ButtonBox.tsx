@@ -13,11 +13,12 @@ import { useRouter } from "next/dist/client/router";
 
 interface Props {
   like: string;
-  song_id;
+  song_id: any;
+  artist_id: any;
   playMusic(): void;
 }
 
-const ButtonBox: FC<Props> = ({ like, song_id, playMusic }) => {
+const ButtonBox: FC<Props> = ({ like, song_id, playMusic, artist_id }) => {
   const dispatch = setContextValue();
   const router = useRouter();
   const [isLike, setIsLike] = useState(false);
@@ -27,6 +28,10 @@ const ButtonBox: FC<Props> = ({ like, song_id, playMusic }) => {
     dispatch({
       type: "SET_MODAL",
       modal: "support",
+    });
+    dispatch({
+      type: "SET_USER_ID",
+      user_id: artist_id,
     });
   };
 

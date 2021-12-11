@@ -63,6 +63,7 @@ const MusicDetail: FC<Props> = ({ music }) => {
           <ButtonBox
             like={music.like}
             song_id={music.song_id}
+            artist_id={music.user_id}
             playMusic={playMusic}
           />
         </S.Description>
