@@ -37,7 +37,8 @@ const Support: FC = () => {
         comment: comment,
       })
       .then((res) => {
-        toast.success("✨ 후원이 완료되었습니다! 후원내역에서 확인해보세요.");
+        toast.success("✨ 후원이 완료되었습니다!");
+        toast.success("후원내역에서 확인할 수 있습니다");
         dispatch({
           type: "SET_MODAL",
           modal: "none",
