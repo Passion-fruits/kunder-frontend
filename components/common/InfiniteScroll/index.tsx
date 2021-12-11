@@ -10,8 +10,6 @@ interface Props {
   user_id?: number;
 }
 
-console.log("sfdsdf");
-
 const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
@@ -57,14 +55,14 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
   }, [page]);
 
   return (
-    <S.Wrapper>
+    <>
       {type === "profileMusic" && (
         <CardList data={data} option="musicCardToMain" />
       )}
       {type === "profilePlaylist" && (
         <CardList data={data} option="playlistCard" />
       )}
-    </S.Wrapper>
+    </>
   );
 };
 
