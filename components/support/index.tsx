@@ -87,7 +87,7 @@ const Support: FC<Props> = () => {
           <LoadingSpinner size={50} />
         </S.LoadingWrap>
       )}
-      <S.MoredButton onClick={showMore}>더 보기</S.MoredButton>
+      {!loading && <S.MoredButton onClick={showMore}>더 보기</S.MoredButton>}
     </S.Wrapper>
   );
 };
