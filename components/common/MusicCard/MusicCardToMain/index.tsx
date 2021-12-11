@@ -33,7 +33,7 @@ const MusicCardToMain: FC<Props> = ({ music }) => {
       <Link href={`/music/${music.song_id}`}>
         <h1 className="title text-overflow">{music.title}</h1>
       </Link>
-      <Link href="/profile/3">
+      <Link href={`/profile/3`}>
         <h3 className="artist text-overflow">{music.artist}</h3>
       </Link>
     </S.Wrapper>

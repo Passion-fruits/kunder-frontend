@@ -17,10 +17,11 @@ export type State = {
   modal?: ModalOption;
   song_id?: string | string[] | number;
   music?: Music;
+  user_id?: string | string[] | number;
 };
 
 export type Action = State & {
-  type: "SET_MODAL" | "SET_SONG_ID" | "SET_MUSIC";
+  type: "SET_MODAL" | "SET_SONG_ID" | "SET_MUSIC" | "SET_USER_ID";
 };
 
 export type SampleDispatch = Dispatch<Action>;

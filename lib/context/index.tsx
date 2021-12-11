@@ -21,6 +21,11 @@ function reducer(state: State, action: Action): State {
         ...state,
         music: action.music,
       };
+    case "SET_USER_ID":
+      return {
+        ...state,
+        user_id: action.user_id,
+      };
     default:
       throw new Error("Unhandled action");
   }
@@ -31,6 +36,7 @@ export function ContextProvider({ children }: { children: React.ReactNode }) {
     modal: "none",
     song_id: null,
     music: null,
+    user_id: null,
   });
   return (
     <StateContext.Provider value={state}>

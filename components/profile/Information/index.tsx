@@ -29,6 +29,10 @@ const Information: FC<Props> = ({ profile }) => {
       type: "SET_MODAL",
       modal: "support",
     });
+    dispatch({
+      type: "SET_USER_ID",
+      user_id: user_id,
+    });
   };
 
   const updateProfile = () => {
