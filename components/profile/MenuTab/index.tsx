@@ -34,6 +34,9 @@ const MenuTab: FC<Props> = ({ user_id }) => {
       {menu === "팔로워" && (
         <InfiniteCroll type="profileFollower" user_id={user_id} />
       )}
+      {menu === "팔로잉" && (
+        <InfiniteCroll type="profileFollowing" user_id={user_id} />
+      )}
     </S.Wrapper>
   );
 };

@@ -4,10 +4,13 @@ import CardList from "../OptionCardList";
 import music from "../../../lib/api/music";
 import playlist from "../../../lib/api/playlist";
 import profile from "../../../lib/api/profile";
-import { useRouter } from "next/dist/client/router";
 
 interface Props {
-  type: "profileMusic" | "profilePlaylist" | "profileFollower";
+  type:
+    | "profileMusic"
+    | "profilePlaylist"
+    | "profileFollower"
+    | "profileFollowing";
   user_id?: number;
 }
 
@@ -57,6 +60,17 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
       .catch(() => setEndPage(false));
   };
 
+  const getUserFollowing = () => {
+    profile
+      .getUserFollowing({ user_id: user_id, page: page })
+      .then((res) => {
+        const following = res.data.followings;
+        if (following.length === 0) setEndPage(false);
+        else setData(data.concat(following));
+      })
+      .catch(() => setEndPage(false));
+  };
+
   const clear = () =>
     new Promise((resolve) => {
       setData([]);
@@ -74,6 +88,8 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
         return getProfilePlaylist();
       case "profileFollower":
         return getUserFollower();
+      case "profileFollowing":
+        return getUserFollowing();
     }
   };
 
@@ -105,6 +121,9 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
         <CardList data={data} option="playlistCard" />
       )}
       {type === "profileFollower" && (
+        <CardList data={data} option="profileCard" />
+      )}
+      {type === "profileFollowing" && (
         <CardList data={data} option="profileCard" />
       )}
     </>
