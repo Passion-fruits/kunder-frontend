@@ -12,6 +12,7 @@ export type SupportType = "mySupport" | "isSupported";
 interface Props {}
 
 const Support: FC<Props> = () => {
+  const size = 5;
   const [supportType, setSupportType] = useState<SupportType>("mySupport");
   const [isDone, setIsDone] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -39,7 +40,7 @@ const Support: FC<Props> = () => {
     if (supportType === "mySupport") {
       setType(1 + isDone);
       kdt
-        .getMySupport({ page: page, size: 10, done: isDone })
+        .getMySupport({ page: page, size: size, done: isDone })
         .then((res) => {
           setSupportData(supportData.concat(res.data.history));
           setLoading(false);
@@ -48,7 +49,7 @@ const Support: FC<Props> = () => {
     } else {
       setType(3 + isDone);
       kdt
-        .getIsSupported({ page: page, size: 10, done: isDone })
+        .getIsSupported({ page: page, size: size, done: isDone })
         .then((res) => {
           setLoading(false);
           setSupportData(supportData.concat(res.data.history));
