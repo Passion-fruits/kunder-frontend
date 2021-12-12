@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import * as S from "./styles";
 import InfiniteCroll from "../../common/InfiniteScroll";
+import CardList from "./../../common/OptionCardList/index";
 
 interface Props {
   user_id;
@@ -31,6 +32,7 @@ const MenuTab: FC<Props> = ({ user_id }) => {
       {menu === "플레이리스트" && (
         <InfiniteCroll type="profilePlaylist" user_id={user_id} />
       )}
+      {menu === "팔로워" && <CardList option="profileCard" data={[]} />}
     </S.Wrapper>
   );
 };
