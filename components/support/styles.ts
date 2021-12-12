@@ -27,3 +27,19 @@ export const LoadingWrap = styled.div`
   justify-content: center;
   margin-top: 30px;
 `;
+
+export const MoredButton = styled.button`
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: ${ColorMap.grey300};
+  background-color: ${ColorMap.grey800};
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-top: 20px;
+  &:hover {
+    color: ${ColorMap.blue100};
+    background-color: ${ColorMap.grey900};
+  }
+`;

@@ -62,7 +62,7 @@ const PlaylistDetail: FC<Props> = ({
           </button>
           <button onClick={requestLike}>
             <HeartIcon size={15} full={isLike} color="#000" />{" "}
-            {isLike ? "좋아요 취소하기" : "좋아요 표시하기"}
+            {isLike ? "좋아요 취소" : "좋아요"}
           </button>
         </S.ButtonWrap>
       </S.PlaylistInformation>
