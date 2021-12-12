@@ -52,7 +52,9 @@ const CardList: FC<Props> = ({ data, option }: Props) => {
       )}
       {option === "profileCard" && (
         <S.RowWrapper>
-          <ProfileCard />
+          {data.map((obj, index) => (
+            <ProfileCard key={index} profile={obj} />
+          ))}
         </S.RowWrapper>
       )}
     </>

@@ -1,12 +1,13 @@
 import { FC, useEffect, useState } from "react";
-import * as S from "./styles";
 import { CheckScroll } from "./../../../lib/utils/checkScroll";
 import CardList from "../OptionCardList";
 import music from "../../../lib/api/music";
 import playlist from "../../../lib/api/playlist";
+import profile from "../../../lib/api/profile";
+import { useRouter } from "next/dist/client/router";
 
 interface Props {
-  type: "profileMusic" | "profilePlaylist";
+  type: "profileMusic" | "profilePlaylist" | "profileFollower";
   user_id?: number;
 }
 
@@ -14,6 +15,7 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [endPage, setEndPage] = useState(false);
+  const [isClear, setIsClear] = useState(false);
 
   useEffect(() => {
     let page = 1;
@@ -44,15 +46,55 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
       .catch((err) => setEndPage(false));
   };
 
-  useEffect(() => {
-    if (endPage) return;
+  const getUserFollower = () => {
+    profile
+      .getUserFollower({ user_id: user_id, page: page })
+      .then((res) => {
+        const followers = res.data.followers;
+        if (followers.length === 0) setEndPage(false);
+        else setData(data.concat(followers));
+      })
+      .catch(() => setEndPage(false));
+  };
+
+  const clear = () =>
+    new Promise((resolve) => {
+      setData([]);
+      setPage(1);
+      resolve({
+        clear: true,
+      });
+    });
+
+  const getData = () => {
     switch (type) {
       case "profileMusic":
         return getProfileMusic();
       case "profilePlaylist":
         return getProfilePlaylist();
+      case "profileFollower":
+        return getUserFollower();
     }
+  };
+
+  useEffect(() => {
+    if (endPage) return;
+    if (page === 1) return;
+    getData();
   }, [page]);
+
+  useEffect(() => {
+    if (data.length !== 0) {
+      setIsClear(!isClear);
+      clear();
+    } else {
+      getData();
+    }
+  }, [isClear]);
+
+  useEffect(() => {
+    setIsClear(!isClear);
+  }, [user_id]);
 
   return (
     <>
@@ -61,6 +103,9 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
       )}
       {type === "profilePlaylist" && (
         <CardList data={data} option="playlistCard" />
+      )}
+      {type === "profileFollower" && (
+        <CardList data={data} option="profileCard" />
       )}
     </>
   );

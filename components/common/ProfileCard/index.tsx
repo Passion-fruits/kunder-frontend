@@ -2,19 +2,22 @@ import { FC } from "react";
 import styled from "@emotion/styled";
 import LoadImage from "../LoadImage";
 import { ColorMap } from "./../../../styles/color";
+import { ProfileCard } from "../../../lib/interface/profile";
+import { useRouter } from "next/dist/client/router";
 
-interface Props {}
+interface Props {
+  profile: ProfileCard;
+}
 
-const ProfileCard: FC<Props> = () => {
+const ProfileCard: FC<Props> = ({ profile }) => {
+  const router = useRouter();
   return (
     <Wrapper>
-      <LoadImage
-        border_radius="circle"
-        size={200}
-        src="https://newsimg.sedaily.com/2020/11/24/1ZAJ728KBG_1.jpg"
-      />
-      <h1>김팔복</h1>
-      <h3>팔로워 0명</h3>
+      <div onClick={() => router.push(`/profile/${profile.id}`)}>
+        <LoadImage border_radius="circle" size={200} src={profile.image_path} />
+      </div>
+      <h1>{profile.name}</h1>
+      <h3>팔로워 {profile.follower}명</h3>
     </Wrapper>
   );
 };
@@ -25,6 +28,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & img {
+    cursor: pointer;
+  }
   & h1 {
     color: ${ColorMap.grey000};
     margin-top: 10px;
