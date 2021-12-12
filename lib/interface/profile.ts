@@ -14,3 +14,10 @@ export interface Profile {
   follower: string;
   following: string;
 }
+
+export interface ProfileCard {
+  name: string;
+  image_path: string;
+  id: number;
+  follower: number;
+}

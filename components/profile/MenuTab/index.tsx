@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import * as S from "./styles";
 import InfiniteCroll from "../../common/InfiniteScroll";
 
@@ -30,6 +30,12 @@ const MenuTab: FC<Props> = ({ user_id }) => {
       )}
       {menu === "플레이리스트" && (
         <InfiniteCroll type="profilePlaylist" user_id={user_id} />
+      )}
+      {menu === "팔로워" && (
+        <InfiniteCroll type="profileFollower" user_id={user_id} />
+      )}
+      {menu === "팔로잉" && (
+        <InfiniteCroll type="profileFollowing" user_id={user_id} />
       )}
     </S.Wrapper>
   );

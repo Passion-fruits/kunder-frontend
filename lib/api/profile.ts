@@ -39,4 +39,16 @@ export default {
       data: fd,
     });
   },
+  getUserFollower({ user_id, page }) {
+    return request({
+      method: "get",
+      url: `/follower/${user_id}?page=${page}`,
+    });
+  },
+  getUserFollowing({ user_id, page }) {
+    return request({
+      method: "get",
+      url: `/following/${user_id}?page=${page}`,
+    });
+  },
 };
