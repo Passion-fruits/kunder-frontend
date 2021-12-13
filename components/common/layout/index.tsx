@@ -26,6 +26,9 @@ const Layout: FC<Props> = ({ children }) => {
   return (
     <>
       {modalState !== "none" && <Modal />}
+      {router.pathname === "/music/[id]" && (
+        <S.ColorBackground background={`#${context.color}`} />
+      )}
       <S.Wrapper>
         {router.pathname === "/auth" ? (
           <ImageBackground />

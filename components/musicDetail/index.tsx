@@ -21,11 +21,13 @@ const MusicDetail: FC<Props> = ({ music }) => {
   const song_id = router.query.id;
   const [similarMusic, setSimilarMusic] = useState([]);
 
-  console.log(music.color_hex);
-
   useEffect(() => {
     recommend.getSimilarMusic({ song_id: song_id, size: 6 }).then((res) => {
       setSimilarMusic(res.data);
+    });
+    dispatch({
+      type: "SET_COLOR",
+      color: music.color_hex,
     });
   }, [song_id]);
 

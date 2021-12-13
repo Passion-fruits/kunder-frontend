@@ -15,7 +15,7 @@ export const PlaylistInformation = styled.div`
   & .playlist-title {
     margin-top: 10px;
     font-size: 35px;
-    font-weight: bold;
+    font-weight: 500;
     color: ${ColorMap.grey000};
   }
   & .playlist-maker {

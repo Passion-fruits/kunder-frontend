@@ -29,3 +29,11 @@ export const Cover = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const ColorBackground = styled.div<{ background }>`
+  width: 100%;
+  height: 500px;
+  background: ${(res) => `linear-gradient(${res.background},black)`};
+  opacity: 0.3;
+  position: absolute;
+`;

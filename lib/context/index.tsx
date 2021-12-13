@@ -26,6 +26,11 @@ function reducer(state: State, action: Action): State {
         ...state,
         user_id: action.user_id,
       };
+    case "SET_COLOR":
+      return {
+        ...state,
+        color: action.color,
+      };
     default:
       throw new Error("Unhandled action");
   }

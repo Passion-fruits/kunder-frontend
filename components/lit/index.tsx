@@ -15,7 +15,7 @@ const Lit: FC<Props> = () => {
   const dispatch = setContextValue();
 
   useEffect(() => {
-    music.getStream({ size: 10, genre: 3, page: 1, sort: 1 }).then((res) => {
+    music.getStream({ size: 10, genre: 1, page: 1, sort: 1 }).then((res) => {
       setMusicList(res.data.songs);
     });
   }, []);
