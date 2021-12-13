@@ -83,11 +83,12 @@ const Wrapper = styled.div`
   select {
     width: 100%;
     height: 50px;
-    border: 1px solid ${ColorMap.grey300};
+    border: 1px solid ${ColorMap.grey500};
     color: ${ColorMap.grey100};
     font-size: 17px;
     border-radius: 5px;
     padding: 0 15px;
+    background-color: ${ColorMap.grey900};
     &::placeholder {
       color: ${ColorMap.grey200};
     }

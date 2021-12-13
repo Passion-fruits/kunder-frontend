@@ -9,16 +9,16 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   width: 1100px;
-  padding: 25px 50px;
+  padding: 0px 50px;
   border-radius: 10px;
-  background-color: ${ColorMap.grey800};
+  /*   background-color: ${ColorMap.grey800}; */
 `;
 
 export const Description = styled.div`
   border-left: 3px solid ${ColorMap.mainColor};
   padding: 3px 15px;
   font-size: 17px;
-  color: ${ColorMap.grey200};
+  color: ${ColorMap.grey100};
 `;
 
 export const FlexWrap = styled.div`
