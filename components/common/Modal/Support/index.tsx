@@ -27,6 +27,7 @@ const Support: FC = () => {
     }
     if (!comment) {
       toast.info("😢 질문을 작성해주세요");
+      return;
     }
     toast.info("정상 처리중입니다");
     setLoading(true);

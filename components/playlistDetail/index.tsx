@@ -6,6 +6,11 @@ import CardList from "../common/OptionCardList";
 import * as S from "./styles";
 import { useRouter } from "next/dist/client/router";
 import LoadImage from "../common/LoadImage";
+import { USER_ID } from "./../../lib/api/export";
+import FileInput from "../common/FileInput";
+import { getFileData } from "./../../lib/utils/getFileData";
+import playlistApi from "../../lib/api/playlist";
+import { toast } from "material-react-toastify";
 
 interface Props {
   playlistDetailInfor: PlaylistDetailType;
@@ -18,6 +23,7 @@ const PlaylistDetail: FC<Props> = ({
   const playlist_id = router.query.id;
   const [isLike, setIsLike] = useState(false);
   const [likeCnt, setLikeCnt] = useState(0);
+  const [isMine, setIsMine] = useState(false);
 
   useEffect(() => {
     like.getIsPlaylistLike(playlist_id).then((res) => {
@@ -37,12 +43,37 @@ const PlaylistDetail: FC<Props> = ({
     }
   };
 
+  const updatePlaylistCover = (event) => {
+    getFileData(event).then((res) => {
+      playlistApi
+        .updatePlaylistCover({
+          image: res.file,
+          playlist_id: playlist_id,
+        })
+        .then((res) => {
+          toast.success("😊 정보가 변경되었습니다");
+          toast.info("새로고침 후 확인해주세요");
+        });
+    });
+  };
+
   useEffect(() => {
     setLikeCnt(parseInt(playlist.like));
   }, []);
 
+  useEffect(() => {
+    if (playlist.user_id == localStorage.getItem(USER_ID)) {
+      setIsMine(true);
+    }
+  }, []);
+
   return (
     <S.Wrapper>
+      <FileInput
+        id="playlist-cover"
+        type="img"
+        onChange={updatePlaylistCover}
+      />
       <S.PlaylistInformation>
         <S.CoverImageWrapper>
           <div
@@ -60,10 +91,18 @@ const PlaylistDetail: FC<Props> = ({
           <button>
             <PlayIcon size={15} /> 전체 재생하기
           </button>
-          <button onClick={requestLike}>
-            <HeartIcon size={15} full={isLike} color="#000" />{" "}
-            {isLike ? "좋아요 취소" : "좋아요"}
-          </button>
+          {isMine ? (
+            <button
+              onClick={() => document.getElementById("playlist-cover").click()}
+            >
+              커버사진 변경
+            </button>
+          ) : (
+            <button onClick={requestLike}>
+              <HeartIcon size={15} full={isLike} color="#000" />{" "}
+              {isLike ? "좋아요 취소" : "좋아요"}
+            </button>
+          )}
         </S.ButtonWrap>
       </S.PlaylistInformation>
       <S.PlaylistMusicWrapper>

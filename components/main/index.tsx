@@ -22,13 +22,21 @@ const Main: FC<Props> = () => {
   }, []);
   return (
     <S.Wrapper>
-      <ChartTab />
+      {/*       <ChartTab /> */}
       <S.CardListWrap>
         <h1 className="list-title">인기 음악을 만나보세요!</h1>
         <CardList option="musicCardToMain" data={popularMusic} />
       </S.CardListWrap>
       <S.CardListWrap>
         <h1 className="list-title">지금 뜨는 플레이리스트</h1>
+        <CardList option="playlistCard" data={popularPlaylist} />
+      </S.CardListWrap>
+      <S.CardListWrap>
+        <h1 className="list-title">따끈따끈 새로나온 음악</h1>
+        <CardList option="musicCardToMain" data={popularMusic} />
+      </S.CardListWrap>
+      <S.CardListWrap>
+        <h1 className="list-title">취향저격 플레이리스트</h1>
         <CardList option="playlistCard" data={popularPlaylist} />
       </S.CardListWrap>
     </S.Wrapper>

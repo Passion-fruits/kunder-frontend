@@ -46,4 +46,17 @@ export default {
       url: `/playlist/popular?page=${page}&size=${size}`,
     });
   },
+  updatePlaylistCover({ image, playlist_id }) {
+    const fd = new FormData();
+    fd.append("image", image);
+    return request({
+      method: "patch",
+      url: `/playlist/${playlist_id}`,
+      headers: {
+        "Content-type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      data: fd,
+    });
+  },
 };
