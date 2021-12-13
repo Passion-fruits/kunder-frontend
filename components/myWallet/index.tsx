@@ -68,7 +68,7 @@ const MyWallet: FC<Props> = () => {
       <hr className="line" />
       <S.CardList>
         {coinCardArr.map((obj, index) => (
-          <Card coin={coin} coinNum={obj.coinCnt} cost={obj.price} />
+          <Card coin={coin} coinNum={obj.coinCnt} cost={obj.price * 1.2} />
         ))}
       </S.CardList>
       <hr className="line" />

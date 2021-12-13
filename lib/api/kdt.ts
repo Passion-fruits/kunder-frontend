@@ -62,4 +62,19 @@ export default {
       },
     });
   },
+  kdtSuccessCallback({ payment_key, order_id, amount }) {
+    return request({
+      method: "post",
+      url: `/kdt`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      data: {
+        payment_key: payment_key,
+        order_id: order_id,
+        amount: amount,
+      },
+    });
+  },
 };
