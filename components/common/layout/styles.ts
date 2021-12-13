@@ -33,7 +33,7 @@ export const Cover = styled.div`
 export const ColorBackground = styled.div<{ background }>`
   width: 100%;
   height: 500px;
-  background: ${(res) => `linear-gradient(${res.background},black)`};
+  background: ${(res) => `linear-gradient(black,${res.background},black)`};
   opacity: 0.3;
   position: absolute;
 `;

@@ -56,7 +56,7 @@ export const SubInformationBox = styled.div`
   & .show-cnt {
     padding: 0 15px;
     height: 100%;
-    background-color: ${ColorMap.grey900};
+    background-color: ${ColorMap.grey700};
     color: ${ColorMap.grey000};
     display: flex;
     justify-content: center;
@@ -148,7 +148,7 @@ export const WriteComment = styled.input`
   width: 100%;
   height: 60px;
   margin-top: 25px;
-  background-color: ${ColorMap.grey800};
+  background-color: ${ColorMap.grey700};
   border-radius: 5px;
   padding: 0 20px;
   font-size: 16px;
