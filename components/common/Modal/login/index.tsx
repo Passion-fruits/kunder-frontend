@@ -42,10 +42,8 @@ const Login: FC<Props> = () => {
         router.push("/");
         return;
       } else {
-        dispatch({
-          type: "SET_MODAL",
-          modal: "signUp",
-        });
+        changeModalToSignup();
+        toast.success("🙌 회원가입을 환영합니다.");
       }
     });
   };
@@ -69,7 +67,13 @@ const Login: FC<Props> = () => {
         <button className="facebook">Facebook 로그인</button>
         <button className="kakao">Kakao 로그인</button>
       </ButtonWrap>
-      <span onClick={changeModalToSignup}>개인정보 이용 약관</span>
+      <span
+        onClick={() =>
+          window.open("https://github.com/Passion-fruits/privacy-policy")
+        }
+      >
+        개인정보 이용 약관
+      </span>
     </Wrapper>
   );
 };

@@ -14,9 +14,14 @@ const Auth: FC<Props> = () => {
   const [musicList, setMusicList] = useState([]);
 
   useEffect(() => {
-    music.getStream({ size: 10, page: 1, sort: 1, genre: 3 }).then((res) => {
-      setMusicList(res.data.songs);
-    });
+    music
+      .getStream({ size: 10, page: 1, sort: 1, genre: 3 })
+      .then((res) => {
+        setMusicList(res.data.songs);
+      })
+      .catch(() => {
+        return;
+      });
   }, []);
 
   return (

@@ -13,12 +13,22 @@ const Main: FC<Props> = () => {
   const [popularMusic, setPopularMusic] = useState<Music[]>([]);
   const [popularPlaylist, setPopularPlaylist] = useState<Playlist[]>([]);
   useEffect(() => {
-    music.getStream({ genre: 3, page: 1, sort: 1, size: 6 }).then((res) => {
-      setPopularMusic(res.data.songs);
-    });
-    playlist.getPopularPlaylist({ page: 1, size: 6 }).then((res) => {
-      setPopularPlaylist(res.data.playlist);
-    });
+    music
+      .getStream({ genre: 1, page: 1, sort: 1, size: 6 })
+      .then((res) => {
+        setPopularMusic(res.data.songs);
+      })
+      .catch(() => {
+        return;
+      });
+    playlist
+      .getPopularPlaylist({ page: 1, size: 6 })
+      .then((res) => {
+        setPopularPlaylist(res.data.playlist);
+      })
+      .catch(() => {
+        return;
+      });
   }, []);
   return (
     <S.Wrapper>

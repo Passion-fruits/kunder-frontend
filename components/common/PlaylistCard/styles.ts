@@ -40,10 +40,30 @@ export const CoverImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  /*   &::before,
+  ::after {
+    content: "";
+    position: absolute;
+    border-radius: 3px;
+  } */
+  &::before {
+    width: 190px;
+    height: 190px;
+    transform: translateY(-10px);
+    background-color: ${ColorMap.grey500};
+    z-index: -1;
+  }
+  &::after {
+    width: 180px;
+    height: 180px;
+    transform: translateY(-20px);
+    background-color: ${ColorMap.grey600};
+    z-index: -2;
+  }
   & img {
-    width: 200px;
-    height: 200px;
-    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
   }
   & .color-line {
     opacity: 0.9;

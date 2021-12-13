@@ -14,4 +14,5 @@ export interface Music extends MusicInformation {
   mood: string;
   like: string;
   comment: string;
+  color_hex: string;
 }

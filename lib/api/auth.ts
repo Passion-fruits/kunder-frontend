@@ -10,4 +10,16 @@ export default {
       },
     });
   },
+  signup({ name, email, userGenre, image_path }) {
+    return request({
+      url: `/auth`,
+      method: "post",
+      data: {
+        name: name,
+        email: email,
+        user_genre: userGenre,
+        image_path: image_path,
+      },
+    });
+  },
 };
