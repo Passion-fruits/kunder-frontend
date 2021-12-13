@@ -85,6 +85,6 @@ export const PlaylistMusicWrapper = styled.div`
   justify-content: flex-end;
   padding-bottom: 130px;
   & .flex-wrap {
-    width: 830px;
+    width: 850px;
   }
 `;

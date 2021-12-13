@@ -35,12 +35,20 @@ const MusicCardToPlaylist: FC<Props> = ({ music, index }) => {
   return (
     <S.Wrapper>
       <MusicInformation type="playlist" music={music} index={index} />
+      <S.HeartWrap>
+        <div># {music.genre}</div>
+        <div># {music.mood}</div>
+        <div>
+          <HeartIcon size={12} />
+          {music.like}
+        </div>
+      </S.HeartWrap>
       <S.ControlBtnWrap>
         <button onClick={addPlaylist}>
-          <AddPlaylistIcon size={18} />
+          <AddPlaylistIcon size={16} />
         </button>
         <button onClick={musicLike}>
-          <HeartIcon size={18} full={isLike} />
+          <HeartIcon size={17} full={isLike} />
         </button>
       </S.ControlBtnWrap>
     </S.Wrapper>
