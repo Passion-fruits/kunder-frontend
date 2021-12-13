@@ -3,11 +3,13 @@ import * as S from "./styles";
 import Card from "./Card";
 import kdt from "../../lib/api/kdt";
 import { KdtCard, MyKdt } from "./../../lib/interface/kdt";
+import { useRouter } from "next/dist/client/router";
 
 interface Props {}
 
 const MyWallet: FC<Props> = () => {
   const coin = "별풍선";
+  const router = useRouter();
   const [myKdt, setMyKdt] = useState<MyKdt>();
   const coinCardArr: KdtCard[] = [
     {
@@ -49,7 +51,7 @@ const MyWallet: FC<Props> = () => {
           {myKdt && (
             <>
               <span className="highlight">
-                {parseInt(myKdt.total_kdt) / Math.pow(10, 18)}
+                {Math.floor(parseInt(myKdt.total_kdt) / Math.pow(10, 18))}
               </span>
               개
             </>
@@ -61,8 +63,10 @@ const MyWallet: FC<Props> = () => {
           을 받을 수 있습니다.
         </S.Explain>
         <S.TopBtn>
-          <button>거래내역 보기</button>
-          <button>후원내역 보기</button>
+          {/*           <button>거래내역 보기</button> */}
+          <button onClick={() => router.push(`/me/support`)}>
+            후원내역 보기
+          </button>
         </S.TopBtn>
       </S.Top>
       <hr className="line" />
