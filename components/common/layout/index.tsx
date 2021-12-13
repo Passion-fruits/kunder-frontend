@@ -2,12 +2,12 @@ import { useRouter } from "next/dist/client/router";
 import { FC, useEffect } from "react";
 import { getContextValue } from "../../../lib/context";
 import AudioPlayer from "../AudioPlayer";
-import Header from "../Header";
 import Modal from "../Modal";
 import ImageBackground from "./ImageBackground";
 import * as S from "./styles";
 import { ACCESS_TOKEN } from "./../../../lib/api/export";
 import { toast } from "material-react-toastify";
+import Header from "../Header/index";
 
 interface Props {}
 
