@@ -35,14 +35,14 @@ const Support: FC<Props> = () => {
     return;
   };
 
-  const getData = () => {
+  const getData = ({ data, page }) => {
     setLoading(true);
     if (supportType === "mySupport") {
       setType(1 + isDone);
       kdt
         .getMySupport({ page: page, size: size, done: isDone })
         .then((res) => {
-          setSupportData(supportData.concat(res.data.history));
+          setSupportData(data.concat(res.data.history));
           setLoading(false);
         })
         .catch(error);
@@ -52,7 +52,7 @@ const Support: FC<Props> = () => {
         .getIsSupported({ page: page, size: size, done: isDone })
         .then((res) => {
           setLoading(false);
-          setSupportData(supportData.concat(res.data.history));
+          setSupportData(data.concat(res.data.history));
         })
         .catch(error);
     }
@@ -60,22 +60,13 @@ const Support: FC<Props> = () => {
 
   useEffect(() => {
     if (page === 1) return;
-    getData();
+    getData({ data: supportData, page: page });
   }, [isDone, page]);
 
-  const clear = () =>
-    new Promise((resolve) => {
-      setPage(1);
-      setSupportData([]);
-      resolve({
-        isClear: true,
-      });
-    });
-
   useEffect(() => {
-    clear().then(() => {
-      getData();
-    });
+    getData({ data: [], page: 1 });
+    setSupportData([]);
+    setPage(1);
   }, [isDone, supportType]);
 
   const showMore = () => {

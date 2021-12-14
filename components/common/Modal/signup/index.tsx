@@ -36,7 +36,7 @@ const Signup: FC = () => {
         userGenre: [genre],
         image_path:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUgmQ7X0AgXyJW3M8-w0hyMuiLRrBCbQ9nnN7V4Bc0Y_iZog1BXQummOcQAHC2fPsgu4A&usqp=CAU",
-        email: "jidole01@naver.com",
+        email: "jidole01@gmail.com",
       })
       .then((res) => {
         const { access_token, refresh_token, user_id } = res.data;

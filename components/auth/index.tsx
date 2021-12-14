@@ -15,7 +15,7 @@ const Auth: FC<Props> = () => {
 
   useEffect(() => {
     music
-      .getStream({ size: 10, page: 1, sort: 1, genre: 3 })
+      .getStream({ size: 10, page: 1, sort: 1, genre: 1 })
       .then((res) => {
         setMusicList(res.data.songs);
       })
