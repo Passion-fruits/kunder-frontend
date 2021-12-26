@@ -4,6 +4,7 @@ import MusicInformation from "../MusicInformation";
 import AudioPlayerButtonTab from "./AudioPlayerButtonTab";
 import * as S from "./styles";
 import { useInterval } from "./../../../lib/utils/useInterval";
+import history from "../../../lib/api/history";
 
 interface Props {}
 
@@ -48,10 +49,17 @@ const AudioPlayer: FC<Props> = () => {
     });
   }, []);
 
+  const setHistory = () => {
+    history.setHistory(music.song_id).then(() => {
+      return;
+    });
+  };
+
   useEffect(() => {
     setMusicProgress(0);
     if (music) {
       settingAudioStart();
+      setHistory();
     }
   }, [music]);
 

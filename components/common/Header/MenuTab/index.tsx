@@ -9,7 +9,7 @@ const MenuTab: FC<Props> = () => {
     <S.MenuWrapper>
       <Menu content="홈" path="/" />
       <Menu content="LIT" path="/lit" />
-      <Menu content="보관함" path="/me/history" />
+      <Menu content="기록" path="/me/history" />
       <Menu content="검색" path="/search" />
     </S.MenuWrapper>
   );
