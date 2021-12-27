@@ -15,4 +15,14 @@ export default {
       },
     });
   },
+  getHistory({ page, size }) {
+    return request({
+      method: "get",
+      url: `/history?page=${page}&size=${size}`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+    });
+  },
 };

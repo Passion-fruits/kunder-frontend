@@ -62,4 +62,14 @@ export default {
       },
     });
   },
+  getUserLikeMusic({ page, size }) {
+    return request({
+      method: "get",
+      url: `/like/song/list?page=${page}&size=${size}`,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+    });
+  },
 };

@@ -4,13 +4,17 @@ import CardList from "../OptionCardList";
 import music from "../../../lib/api/music";
 import playlist from "../../../lib/api/playlist";
 import profile from "../../../lib/api/profile";
+import history from "../../../lib/api/history";
+import like from "../../../lib/api/like";
 
 interface Props {
   type:
     | "profileMusic"
     | "profilePlaylist"
     | "profileFollower"
-    | "profileFollowing";
+    | "profileFollowing"
+    | "userHistory"
+    | "userLikeMusic";
   user_id?: number;
 }
 
@@ -44,9 +48,8 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
       .getUserPlaylist({ user_id: user_id })
       .then((res) => {
         setData(data.concat(res.data));
-        setEndPage(true);
       })
-      .catch((err) => setEndPage(false));
+      .catch((err) => setEndPage(true));
   };
 
   const getUserFollower = () => {
@@ -54,10 +57,10 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
       .getUserFollower({ user_id: user_id, page: page })
       .then((res) => {
         const followers = res.data.followers;
-        if (followers.length === 0) setEndPage(false);
+        if (followers.length === 0) setEndPage(true);
         else setData(data.concat(followers));
       })
-      .catch(() => setEndPage(false));
+      .catch(() => setEndPage(true));
   };
 
   const getUserFollowing = () => {
@@ -65,16 +68,39 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
       .getUserFollowing({ user_id: user_id, page: page })
       .then((res) => {
         const following = res.data.followings;
-        if (following.length === 0) setEndPage(false);
+        if (following.length === 0) setEndPage(true);
         else setData(data.concat(following));
       })
-      .catch(() => setEndPage(false));
+      .catch(() => setEndPage(true));
+  };
+
+  const getUserHistory = () => {
+    history
+      .getHistory({ page: page, size: 10 })
+      .then((res) => {
+        setData(data.concat(res.data.song));
+      })
+      .catch(() => {
+        setEndPage(true);
+      });
+  };
+
+  const getUserLikeMusic = () => {
+    like
+      .getUserLikeMusic({ page: page, size: 10 })
+      .then((res) => {
+        setData(data.concat(res.data));
+      })
+      .catch(() => {
+        setEndPage(true);
+      });
   };
 
   const clear = () =>
     new Promise((resolve) => {
       setData([]);
       setPage(1);
+      setEndPage(false);
       resolve({
         clear: true,
       });
@@ -90,6 +116,10 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
         return getUserFollower();
       case "profileFollowing":
         return getUserFollowing();
+      case "userHistory":
+        return getUserHistory();
+      case "userLikeMusic":
+        return getUserLikeMusic();
     }
   };
 
@@ -110,7 +140,7 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
 
   useEffect(() => {
     setIsClear(!isClear);
-  }, [user_id]);
+  }, [user_id, type]);
 
   return (
     <>
@@ -125,6 +155,12 @@ const InfiniteCroll: FC<Props> = ({ type, user_id }) => {
       )}
       {type === "profileFollowing" && (
         <CardList data={data} option="profileCard" />
+      )}
+      {type === "userHistory" && (
+        <CardList data={data} option="musicCardToMain" />
+      )}
+      {type === "userLikeMusic" && (
+        <CardList data={data} option="musicCardToMain" />
       )}
     </>
   );
